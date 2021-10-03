@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="@dimen/sticky_column_width"
+    android:elevation="@dimen/right_elevation"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/level1_background_light"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <include
+        android:id="@+id/divider_horizontal"
+        android:layout_width="@dimen/hd_4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        layout="@layout/yellow_divider"/>
+    <TextView
+        android:id="@+id/textview"
+        android:textSize="@dimen/hd_12sp"
+        tools:text="Sticky Column"
+        android:padding="@dimen/hd_12dp"
+        app:layout_constraintStart_toEndOf="@+id/divider_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TableSection</string>
+
+    <string name="cell_header_up">%s ↑</string>
+    <string name="cell_header_down">%s ↓</string>
+    <string name="cell_header_default">%s ⇵</string>
+</resources>
