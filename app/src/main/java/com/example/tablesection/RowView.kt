@@ -1,9 +1,11 @@
 package com.example.tablesection
 
 import android.content.Context
+import android.graphics.Color
 import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import androidx.core.view.updateLayoutParams
@@ -35,17 +37,13 @@ open class RowView(
         for(i in 0..columnCount-1){
             val newCellHolder = LinearLayout(context)
             newCellHolder.layoutParams = LinearLayout.
-            LayoutParams(LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-            newCellHolder.gravity = Gravity.END
+            LayoutParams(LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
             cellHoldersList.add(newCellHolder)
             columnsHolder.addView(newCellHolder)
         }
     }
 
-    fun addStickyColumn(view: View, parentWidth: Int){
-        stickyColumnHolder.updateLayoutParams {
-            width = parentWidth
-        }
+    fun addStickyColumn(view: View){
         stickyColumnHolder.addView(view)
     }
 
@@ -57,7 +55,13 @@ open class RowView(
         cellHoldersList[index].addView(view)
     }
 
+    fun getColumnHolder(pos : Int) : ViewGroup{
+        return cellHoldersList[pos]
+    }
 
+    fun getStickyColumnHolder() : ViewGroup {
+        return stickyColumnHolder
+    }
 
     fun scrollTo(dx: Int){
         scrollView.scrollTo(dx, 0)

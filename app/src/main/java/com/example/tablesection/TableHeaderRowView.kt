@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.Gravity
+import android.view.View
 import android.widget.LinearLayout
 import androidx.core.view.marginLeft
 import androidx.core.view.updateLayoutParams
@@ -18,7 +19,7 @@ class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : A
     init {
         layoutParams = (LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT))
-
+        setBackgroundColor(Color.WHITE)
     }
 
 
@@ -31,10 +32,12 @@ class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : A
     fun setData(data : TableHeaderData){
         stickyColumnCell = CellHeaderView(context)
         stickyColumnCell.layoutParams = LinearLayout.
-            LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT).also {
-                it.leftMargin = 20
-        }
-        addStickyColumn(stickyColumnCell, context.resources.getDimension(R.dimen.sticky_column_width).toInt())
+            LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
+        val stickyCellWithDivider = View.inflate(context,R.layout.table_header_sticky_cell,null)
+        stickyCellWithDivider.findViewById<LinearLayout>(R.id.stick_cell_holder).addView(stickyColumnCell)
+        stickyCellWithDivider.layoutParams = LinearLayout.
+                    LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT)
+        addStickyColumn(stickyCellWithDivider)
         stickyColumnCell.bindData(data.stickyCell)
         for(i in 0..data.cellHeaderList.size-1){
             cells.add(CellHeaderView(context))

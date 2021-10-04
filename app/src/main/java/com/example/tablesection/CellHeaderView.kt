@@ -1,6 +1,7 @@
 package com.example.tablesection
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
@@ -29,7 +30,7 @@ class CellHeaderView : LinearLayout {
     init {
         View.inflate(context,R.layout.cell_header,this)
         gravity = Gravity.END
-        layoutParams = LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT)
+        layoutParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
     }
 
 

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:background="@color/white"
-    android:elevation="@dimen/right_elevation"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/sticky_column_width"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/column_height"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <include
@@ -16,17 +15,18 @@
         app:layout_constraintTop_toTopOf="parent"
         layout="@layout/yellow_divider"/>
     <ImageView
-        android:layout_marginStart="@dimen/hd_12sp"
+        android:layout_marginStart="@dimen/hd_4dp"
         android:id="@+id/ic_indicator"
-        app:layout_constraintBottom_toBottomOf="@+id/textview"
-        app:layout_constraintTop_toTopOf="@+id/textview"
+        app:layout_constraintBottom_toBottomOf="@+id/sticky_col_text_view"
+        app:layout_constraintTop_toTopOf="@+id/sticky_col_text_view"
         app:layout_constraintStart_toEndOf="@+id/divider_horizontal"
         android:src="@drawable/ic_level4_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
-
-        android:id="@+id/textview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/sticky_col_text_view"
         android:textSize="@dimen/hd_12sp"
         tools:text="Sticky Column"
         android:padding="@dimen/hd_12dp"
