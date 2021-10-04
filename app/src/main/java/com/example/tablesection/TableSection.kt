@@ -31,24 +31,22 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
     abstract fun getLevel3CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
     abstract fun getLevel4CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
 
-    private val scrollObservable = MutableLiveData<Int>()
     protected var currentScroll = 0
 
     private val scrollChangeListener : View.OnScrollChangeListener =  @SuppressLint("NewApi")
 
-    object : View.OnScrollChangeListener {
-        override fun onScrollChange(
-            v: View?,
-            scrollX: Int,
-            scrollY: Int,
-            oldScrollX: Int,
-            oldScrollY: Int
-        ) {
-            scrollObservable.value = scrollX
-            currentScroll = scrollX
-            syncScroll()
-        }
-    }
+                    object : View.OnScrollChangeListener {
+                        override fun onScrollChange(
+                            v: View?,
+                            scrollX: Int,
+                            scrollY: Int,
+                            oldScrollX: Int,
+                            oldScrollY: Int
+                        ) {
+                            currentScroll = scrollX
+                            syncScroll()
+                        }
+                    }
 
     init {
         listView.addOnScrollListener(object : RecyclerView.OnScrollListener() {

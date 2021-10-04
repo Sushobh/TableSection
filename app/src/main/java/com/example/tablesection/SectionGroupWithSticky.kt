@@ -28,13 +28,13 @@ class SectionGroupWithSticky <X : TableSection>: RViewSectionGroup<X>(arrayListO
     }
 
     override fun afterStickyIsLaidOut(stickyView: View?) {
-         stickyView?.let {
-             if(stickyView is Level1View){
-                 sections.find {
-                     it.tag.equals(it.tag)
-                 }?.afterStickyIsLaidOut(stickyView)
-             }
-         }
+//         stickyView?.let {
+//             if(stickyView is Level1View){
+//                 sections.find {
+//                     it.tag.equals(it.tag)
+//                 }?.afterStickyIsLaidOut(stickyView)
+//             }
+//         }
     }
 
 
