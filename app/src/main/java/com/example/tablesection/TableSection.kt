@@ -1,16 +1,23 @@
 package com.example.tablesection
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tablesection.data.MyAdapter
 import com.sushobh.section.RViewSection
+import com.sushobh.section.ViewInfoTag
 import java.lang.Exception
 
-abstract class TableSection(val viewTypes : ArrayList<Int>) : RViewSection(){
+abstract class TableSection(val viewTypes : ArrayList<Int>,
+                            val stickyHeadersLinearLayoutManager: StickyHeadersLinearLayoutManager<MyAdapter>,
+                            val tag : ViewInfoTag,listView : RecyclerView
+  ) : RViewSection(){
 
 
     abstract fun getLevel2ViewHolder(view : Level2View) : RecyclerView.ViewHolder
@@ -24,6 +31,33 @@ abstract class TableSection(val viewTypes : ArrayList<Int>) : RViewSection(){
     abstract fun getLevel3CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
     abstract fun getLevel4CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
 
+    private val scrollObservable = MutableLiveData<Int>()
+    protected var currentScroll = 0
+
+    private val scrollChangeListener : View.OnScrollChangeListener =  @SuppressLint("NewApi")
+
+    object : View.OnScrollChangeListener {
+        override fun onScrollChange(
+            v: View?,
+            scrollX: Int,
+            scrollY: Int,
+            oldScrollX: Int,
+            oldScrollY: Int
+        ) {
+            scrollObservable.value = scrollX
+            currentScroll = scrollX
+            syncScroll()
+        }
+    }
+
+    init {
+        listView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                syncScroll()
+            }
+        })
+    }
 
 
     class Level1ViewHolder(val view : Level1View) : RecyclerView.ViewHolder(view){
@@ -41,6 +75,8 @@ abstract class TableSection(val viewTypes : ArrayList<Int>) : RViewSection(){
             val level1View = Level1View(parent.context)
             level1View.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT)
             level1View.addTableHeaderView(tableHeaderRowView)
+            level1View.addHorizontalScrollListener(scrollChangeListener)
+            level1View.tag = tag
             return Level1ViewHolder(level1View)
         }
         else if(viewType.equals(viewTypes.get(1))){
@@ -49,6 +85,8 @@ abstract class TableSection(val viewTypes : ArrayList<Int>) : RViewSection(){
                for(i in 0..getColumnCount()-1){
                    level2View.addColumn(getLevel2CellView(i,parent),getColumnWidth(i),i)
                }
+               level2View.addHorizontalScrollListener(scrollChangeListener)
+               level2View.tag = tag
                return getLevel2ViewHolder(level2View)
         }
         else if(viewType.equals(viewTypes.get(2))){
@@ -57,6 +95,8 @@ abstract class TableSection(val viewTypes : ArrayList<Int>) : RViewSection(){
             for(i in 0..getColumnCount()-1){
                 level3View.addColumn(getLevel3CellView(i,parent),getColumnWidth(i),i)
             }
+            level3View.addHorizontalScrollListener(scrollChangeListener)
+            level3View.tag = tag
             return getLevel3ViewHolder(level3View)
         }
 
@@ -66,11 +106,26 @@ abstract class TableSection(val viewTypes : ArrayList<Int>) : RViewSection(){
             for(i in 0..getColumnCount()-1){
                 level4View.addColumn(getLevel4CellView(i,parent),getColumnWidth(i),i)
             }
+            level4View.addHorizontalScrollListener(scrollChangeListener)
+            level4View.tag = tag
             return getLevel4ViewHolder(level4View)
         }
 
 
         throw Exception("invalid view type")
+    }
+
+    fun syncScroll(){
+        for(i in 0..stickyHeadersLinearLayoutManager.childCount){
+            val view = stickyHeadersLinearLayoutManager.getChildAt(i)
+            view?.let {
+                if(it.tag.equals(tag)){
+                   if(it is StickyHeadersLinearLayoutManager.Scrollable){
+                       it.scrollTo(currentScroll)
+                   }
+                }
+            }
+        }
     }
 
 
@@ -81,5 +136,9 @@ abstract class TableSection(val viewTypes : ArrayList<Int>) : RViewSection(){
             widthArray[i] = getColumnWidth(i)
         }
         return widthArray
+    }
+
+    fun afterStickyIsLaidOut(stickyView: Level1View) {
+        stickyView.scrollTo(currentScroll)
     }
 }

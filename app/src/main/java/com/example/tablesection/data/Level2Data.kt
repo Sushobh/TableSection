@@ -22,7 +22,7 @@ class DummyData(val mainRow : Level1Data,val otherRows : ArrayList<DummyRowData>
 fun getDummyData() : DummyData {
 
     val mainRow = Level1Data(getRandomString(8), getRandomString(8), getRandomString(8))
-    val level2Count = 10
+    val level2Count = 3
     val list = arrayListOf<DummyRowData>()
     for(i in 1..level2Count){
         list.add(getLevel2Dummy(8))

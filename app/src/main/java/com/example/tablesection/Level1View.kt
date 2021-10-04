@@ -6,13 +6,14 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 
-class Level1View : LinearLayout{
+class Level1View : LinearLayout,StickyHeadersLinearLayoutManager.Scrollable{
 
 
      lateinit var header1 : TextView
      lateinit var header2 : TextView
      lateinit var header3 : TextView
      lateinit var expandIndicator : ImageView
+     lateinit var tableHeaderView : TableHeaderRowView
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -38,9 +39,17 @@ class Level1View : LinearLayout{
 
     }
 
+    override fun scrollTo(dx: Int){
+        tableHeaderView.scrollTo(dx)
+    }
+
+    override fun addHorizontalScrollListener(listener: OnScrollChangeListener?) {
+        tableHeaderView.addHorizontalScrollListener(listener)
+    }
 
 
     fun addTableHeaderView(tableHeaderRowView: TableHeaderRowView){
         findViewById<LinearLayout>(R.id.table_header_holder).addView(tableHeaderRowView)
+        this.tableHeaderView = tableHeaderRowView
     }
 }

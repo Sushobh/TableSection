@@ -9,9 +9,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tablesection.data.*
+import com.sushobh.section.ViewInfoTag
 import java.lang.Exception
 
-class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,val context: Context) : TableSection(viewTypes) {
+class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,val context: Context, layoutManager:
+        StickyHeadersLinearLayoutManager<MyAdapter>,viewInfoTag: ViewInfoTag,listView : RecyclerView) : TableSection(viewTypes,layoutManager,viewInfoTag,listView) {
 
     val stickyColumnHeaderName = "Description"
 
@@ -68,12 +70,18 @@ class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,va
 
     override fun bindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
         if(viewHolder is Level1ViewHolder){
+            viewHolder.view.post {
+                viewHolder.view.scrollTo(currentScroll)
+            }
             val data = dummyData.mainRow
             viewHolder.view.header1.text = data.header1
             viewHolder.view.header2.text = data.header2
             viewHolder.view.header3.text = data.header3
         }
         if(viewHolder is Level2ViewHolder){
+            viewHolder.view.post {
+                viewHolder.view.scrollTo(currentScroll)
+            }
              val data = dummyData.otherRows[position-1] as Level2Data
              viewHolder.stickColTextView.text = data.stickCol
              viewHolder.col1.text = data.col1
@@ -88,6 +96,9 @@ class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,va
              viewHolder.col10.text = data.col10
         }
         if(viewHolder is Level3ViewHolder){
+            viewHolder.view.post {
+                viewHolder.view.scrollTo(currentScroll)
+            }
             val data = dummyData.otherRows[position-1] as Level3Data
             viewHolder.stickColTextView.text = data.stickCol
             viewHolder.col1.text = data.col1
@@ -102,6 +113,9 @@ class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,va
             viewHolder.col10.text = data.col10
         }
         if(viewHolder is Level4ViewHolder){
+            viewHolder.view.post {
+                viewHolder.view.scrollTo(currentScroll)
+            }
             val data = dummyData.otherRows[position-1] as Level4Data
             viewHolder.stickColTextView.text = data.stickCol
             viewHolder.col1.text = data.col1

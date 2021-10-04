@@ -1,5 +1,6 @@
 package com.example.tablesection
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.util.DisplayMetrics
@@ -13,10 +14,10 @@ import androidx.core.view.updateLayoutParams
 
 open class RowView(
     context: Context?, var columnCount: Int
-) : LinearLayout(context) {
+) : LinearLayout(context),StickyHeadersLinearLayoutManager.Scrollable {
 
     protected  var stickyColumnHolder : LinearLayout
-    protected  var scrollView : HorizontalScrollView
+    protected  var scrollView : NoFlingScrollView
     private    var columnsHolder : LinearLayout
     private    var cellHoldersList = arrayListOf<LinearLayout>()
 
@@ -63,8 +64,13 @@ open class RowView(
         return stickyColumnHolder
     }
 
-    fun scrollTo(dx: Int){
+    override fun scrollTo(dx: Int){
         scrollView.scrollTo(dx, 0)
+    }
+
+    @SuppressLint("NewApi")
+    override fun addHorizontalScrollListener(listener: OnScrollChangeListener?) {
+        scrollView.setOnScrollChangeListener(listener)
     }
 
     companion object {
@@ -72,4 +78,5 @@ open class RowView(
             return dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
         }
     }
+
 }
