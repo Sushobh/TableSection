@@ -1,4 +1,4 @@
-package com.example.tablesection.data
+package com.example.tablesection
 
 import android.os.Build
 import android.util.Log

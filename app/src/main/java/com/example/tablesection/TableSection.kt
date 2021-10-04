@@ -1,25 +1,24 @@
 package com.example.tablesection
 
 import android.annotation.SuppressLint
-import android.graphics.Color
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
+import android.widget.HorizontalScrollView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tablesection.data.MyAdapter
 import com.sushobh.section.RViewSection
 import com.sushobh.section.ViewInfoTag
 import java.lang.Exception
 
 abstract class TableSection(val viewTypes : ArrayList<Int>,
                             val stickyHeadersLinearLayoutManager: StickyHeadersLinearLayoutManager<MyAdapter>,
-                            val tag : ViewInfoTag,listView : RecyclerView
+                            val tag : ViewInfoTag, listView : RecyclerView
   ) : RViewSection(){
 
+    public interface HasScrollableView <X> where X : StickyHeadersLinearLayoutManager.Scrollable,X : RowView{
+        fun getScrollableView() : X
+    }
 
+    protected var isExpanded : Boolean = true
     abstract fun getLevel2ViewHolder(view : Level2View) : RecyclerView.ViewHolder
     abstract fun getLevel3ViewHolder(view : Level3View) : RecyclerView.ViewHolder
     abstract fun getLevel4ViewHolder(view : Level4View) : RecyclerView.ViewHolder
@@ -30,6 +29,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
     abstract fun getLevel2CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
     abstract fun getLevel3CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
     abstract fun getLevel4CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
+    abstract fun getDataLength() : Int
 
     protected var currentScroll = 0
 
@@ -57,6 +57,29 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         })
     }
 
+    override fun bindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
+        if(viewHolder is Level1ViewHolder){
+            if(isExpanded){
+                viewHolder.view.tableHeaderView.visibility = View.VISIBLE
+                viewHolder.view.expandIndicator.setImageDrawable(viewHolder.itemView.context.getDrawable(R.drawable.ic_hd_up_arrow))
+            }
+            else {
+                viewHolder.view.expandIndicator.setImageDrawable(viewHolder.itemView.context.getDrawable(R.drawable.ic_hd_down_arrow))
+                viewHolder.view.tableHeaderView.visibility = View.GONE
+            }
+        }
+        if(viewHolder is HasScrollableView<*>){
+            if(viewHolder.getScrollableView() is View){
+                val view = viewHolder.getScrollableView()
+                if(view is View){
+                    view.post {
+                        view.scrollTo(currentScroll)
+                    }
+                }
+            }
+        }
+
+    }
 
     class Level1ViewHolder(val view : Level1View) : RecyclerView.ViewHolder(view){
 
@@ -75,6 +98,18 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             level1View.addTableHeaderView(tableHeaderRowView)
             level1View.addHorizontalScrollListener(scrollChangeListener)
             level1View.tag = tag
+            level1View.expandIndicator.setOnClickListener {
+                if(isExpanded){
+                    isExpanded = false
+                    listener.itemRangeRemoved(1,getDataLength(),this)
+                    listener.itemChanged(0,this)
+                }
+                else {
+                    isExpanded = true
+                    listener.itemRangeAdded(1,getDataLength(),this)
+                    listener.itemChanged(0,this)
+                }
+            }
             return Level1ViewHolder(level1View)
         }
         else if(viewType.equals(viewTypes.get(1))){
@@ -126,7 +161,14 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         }
     }
 
-
+    override fun getLength(): Int {
+        return if(!isExpanded){
+            1
+        }
+        else {
+            getDataLength()+1
+        }
+    }
 
     private fun getColumnWidths(): IntArray {
         val widthArray = IntArray(getColumnCount())

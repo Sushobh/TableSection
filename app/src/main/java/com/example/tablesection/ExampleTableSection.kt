@@ -1,7 +1,6 @@
 package com.example.tablesection
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,8 @@ import com.example.tablesection.data.*
 import com.sushobh.section.ViewInfoTag
 import java.lang.Exception
 
-class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,val context: Context, layoutManager:
-        StickyHeadersLinearLayoutManager<MyAdapter>,viewInfoTag: ViewInfoTag,listView : RecyclerView) : TableSection(viewTypes,layoutManager,viewInfoTag,listView) {
+class ExampleTableSection(viewTypes : ArrayList<Int>, val dummyData: DummyData, val context: Context, layoutManager:
+        StickyHeadersLinearLayoutManager<MyAdapter>, viewInfoTag: ViewInfoTag, listView : RecyclerView) : TableSection(viewTypes,layoutManager,viewInfoTag,listView) {
 
     val stickyColumnHeaderName = "Description"
 
@@ -63,25 +62,23 @@ class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,va
         return cellView
     }
 
-
-    override fun getLength(): Int {
-        return dummyData.otherRows.size+1
+    override fun getDataLength(): Int {
+        return dummyData.otherRows.size
     }
 
+
+
+
     override fun bindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
+        super.bindViewHolder(viewHolder, position)
         if(viewHolder is Level1ViewHolder){
-            viewHolder.view.post {
-                viewHolder.view.scrollTo(currentScroll)
-            }
+
             val data = dummyData.mainRow
             viewHolder.view.header1.text = data.header1
             viewHolder.view.header2.text = data.header2
             viewHolder.view.header3.text = data.header3
         }
         if(viewHolder is Level2ViewHolder){
-            viewHolder.view.post {
-                viewHolder.view.scrollTo(currentScroll)
-            }
              val data = dummyData.otherRows[position-1] as Level2Data
              viewHolder.stickColTextView.text = data.stickCol
              viewHolder.col1.text = data.col1
@@ -96,9 +93,6 @@ class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,va
              viewHolder.col10.text = data.col10
         }
         if(viewHolder is Level3ViewHolder){
-            viewHolder.view.post {
-                viewHolder.view.scrollTo(currentScroll)
-            }
             val data = dummyData.otherRows[position-1] as Level3Data
             viewHolder.stickColTextView.text = data.stickCol
             viewHolder.col1.text = data.col1
@@ -113,9 +107,6 @@ class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,va
             viewHolder.col10.text = data.col10
         }
         if(viewHolder is Level4ViewHolder){
-            viewHolder.view.post {
-                viewHolder.view.scrollTo(currentScroll)
-            }
             val data = dummyData.otherRows[position-1] as Level4Data
             viewHolder.stickColTextView.text = data.stickCol
             viewHolder.col1.text = data.col1
@@ -153,7 +144,7 @@ class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,va
     }
 
 
-    class Level2ViewHolder(val view : Level2View) : RecyclerView.ViewHolder(view){
+    class Level2ViewHolder(val view : Level2View) : RecyclerView.ViewHolder(view),HasScrollableView<Level2View>{
         val stickColTextView = view.getStickyColumnHolder().findViewById<TextView>(R.id.sticky_col_text_view)
         val col1 = view.getColumnHolder(0).findViewById<TextView>(R.id.textview)
         val col2 = view.getColumnHolder(1).findViewById<TextView>(R.id.textview)
@@ -165,9 +156,12 @@ class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,va
         val col8 = view.getColumnHolder(7).findViewById<TextView>(R.id.textview)
         val col9 = view.getColumnHolder(8).findViewById<TextView>(R.id.textview)
         val col10 = view.getColumnHolder(9).findViewById<TextView>(R.id.textview)
+        override fun getScrollableView(): Level2View {
+            return view
+        }
     }
 
-    class Level3ViewHolder(val view : Level3View) : RecyclerView.ViewHolder(view){
+    class Level3ViewHolder(val view : Level3View) : RecyclerView.ViewHolder(view),HasScrollableView<Level3View>{
         val stickColTextView = view.getStickyColumnHolder().findViewById<TextView>(R.id.sticky_col_text_view)
         val col1 = view.getColumnHolder(0).findViewById<TextView>(R.id.textview)
         val col2 = view.getColumnHolder(1).findViewById<TextView>(R.id.textview)
@@ -179,9 +173,12 @@ class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,va
         val col8 = view.getColumnHolder(7).findViewById<TextView>(R.id.textview)
         val col9 = view.getColumnHolder(8).findViewById<TextView>(R.id.textview)
         val col10 = view.getColumnHolder(9).findViewById<TextView>(R.id.textview)
+        override fun getScrollableView(): Level3View {
+            return view
+        }
     }
 
-    class Level4ViewHolder(val view : Level4View) : RecyclerView.ViewHolder(view){
+    class Level4ViewHolder(val view : Level4View) : RecyclerView.ViewHolder(view),HasScrollableView<Level4View>{
         val stickColTextView = view.getStickyColumnHolder().findViewById<TextView>(R.id.sticky_col_text_view)
         val col1 = view.getColumnHolder(0).findViewById<TextView>(R.id.textview)
         val col2 = view.getColumnHolder(1).findViewById<TextView>(R.id.textview)
@@ -193,6 +190,9 @@ class ExampleTableSection(viewTypes : ArrayList<Int>,val dummyData: DummyData,va
         val col8 = view.getColumnHolder(7).findViewById<TextView>(R.id.textview)
         val col9 = view.getColumnHolder(8).findViewById<TextView>(R.id.textview)
         val col10 = view.getColumnHolder(9).findViewById<TextView>(R.id.textview)
+        override fun getScrollableView(): Level4View {
+            return view
+        }
     }
 
 }
