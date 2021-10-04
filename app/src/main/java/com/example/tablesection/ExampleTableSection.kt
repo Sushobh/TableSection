@@ -104,6 +104,7 @@ StickyHeadersLinearLayoutManager<MyAdapter>, viewInfoTag: ViewInfoTag, listView 
                         }
                     }
                 }
+                dummyData.otherRows.reverse()
                 listener.itemRangeChanged(0,getLength()-1,this@ExampleTableSection)
             }
         }

@@ -62,7 +62,7 @@ class MyAdapter(private  val sectionGroup : SectionGroupWithSticky<*>) : Recycle
     }
 
     override fun itemRangeChanged(position: Int, count: Int, section: RViewSection) {
-         notifyDataSetChanged()
+         notifyItemRangeChanged(position,count,Unit)
     }
 
     override fun getAdapterStartPosition(section: RViewSection) : Int{
