@@ -1,12 +1,14 @@
-package com.example.tablesection
+package com.example.tablesection.customviews
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.example.tablesection.R
+import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
 
-class Level1View : LinearLayout,StickyHeadersLinearLayoutManager.Scrollable{
+class Level1View : LinearLayout, StickyHeadersLinearLayoutManager.Scrollable {
 
 
      lateinit var header1 : TextView
@@ -31,7 +33,7 @@ class Level1View : LinearLayout,StickyHeadersLinearLayoutManager.Scrollable{
     ) : super(context, attrs, defStyleAttr, defStyleRes)
 
     init {
-        inflate(context,R.layout.level1view,this)
+        inflate(context, R.layout.level1view,this)
         header1 = findViewById(R.id.header1)
         header2 = findViewById(R.id.header2)
         header3 = findViewById(R.id.header3)

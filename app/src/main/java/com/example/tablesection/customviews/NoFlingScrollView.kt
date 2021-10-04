@@ -1,4 +1,4 @@
-package com.example.tablesection
+package com.example.tablesection.customviews
 
 import android.content.Context
 import android.util.AttributeSet

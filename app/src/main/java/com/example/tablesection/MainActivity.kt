@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tablesection.data.getDummyData
-import com.sushobh.section.ViewInfoTag
+import com.example.tablesection.sectioning.SectionGroupWithSticky
+import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
+import com.example.tablesection.customviews.ViewInfoTag
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,9 +1,9 @@
-package com.example.tablesection
+package com.example.tablesection.sectioning
 
 import android.view.View
-import com.sushobh.section.RViewSectionGroup
+import com.example.tablesection.sticky.StickyHeaders
 
-class SectionGroupWithSticky <X : TableSection>: RViewSectionGroup<X>(arrayListOf()),StickyHeaders,StickyHeaders.ViewSetup {
+class SectionGroupWithSticky <X : TableSection>: RViewSectionGroup<X>(arrayListOf()), StickyHeaders, StickyHeaders.ViewSetup {
 
 
     override fun isStickyHeader(position: Int): Boolean {

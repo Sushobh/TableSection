@@ -1,4 +1,4 @@
-package com.sushobh.section
+package com.example.tablesection.customviews
 
 class ViewInfoTag(val id : String) {
 

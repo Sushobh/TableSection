@@ -1,13 +1,10 @@
-package com.example.tablesection
+package com.example.tablesection.customviews
 
 import android.content.Context
 import android.graphics.Color
-import android.util.AttributeSet
-import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
-import androidx.core.view.marginLeft
-import androidx.core.view.updateLayoutParams
+import com.example.tablesection.R
 
 class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : Array<Int>) : RowView(context,columnCount) {
 
@@ -25,7 +22,7 @@ class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : A
 
 
 
-    data class TableHeaderData(var stickyCell : CellHeader,var cellHeaderList : ArrayList<CellHeader>){
+    data class TableHeaderData(var stickyCell : CellHeader, var cellHeaderList : ArrayList<CellHeader>){
 
     }
 
@@ -33,7 +30,7 @@ class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : A
         stickyColumnCell = CellHeaderView(context)
         stickyColumnCell.layoutParams = LinearLayout.
             LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
-        val stickyCellWithDivider = View.inflate(context,R.layout.table_header_sticky_cell,null)
+        val stickyCellWithDivider = View.inflate(context, R.layout.table_header_sticky_cell,null)
         stickyCellWithDivider.findViewById<LinearLayout>(R.id.stick_cell_holder).addView(stickyColumnCell)
         stickyCellWithDivider.layoutParams = LinearLayout.
                     LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT)

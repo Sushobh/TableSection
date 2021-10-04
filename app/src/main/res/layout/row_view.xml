@@ -14,7 +14,7 @@
         android:id="@+id/sticky_column_cell"
         android:layout_width="@dimen/sticky_column_width"
         android:layout_height="@dimen/column_height"/>
-    <com.example.tablesection.NoFlingScrollView
+    <com.example.tablesection.customviews.NoFlingScrollView
 
         app:layout_constraintBottom_toBottomOf="parent"
         android:scrollbars="none"
@@ -29,6 +29,6 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
-    </com.example.tablesection.NoFlingScrollView>
+    </com.example.tablesection.customviews.NoFlingScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

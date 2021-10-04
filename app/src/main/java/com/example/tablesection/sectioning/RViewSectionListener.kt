@@ -1,6 +1,4 @@
-package com.example.tablesection
-
-import com.sushobh.section.RViewSection
+package com.example.tablesection.sectioning
 
 interface RViewSectionListener {
 

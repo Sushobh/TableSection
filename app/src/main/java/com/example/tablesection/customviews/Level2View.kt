@@ -1,12 +1,11 @@
-package com.example.tablesection
+package com.example.tablesection.customviews
 
 import android.content.Context
-import android.graphics.Color
-import android.os.Build
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.annotation.RequiresApi
+import com.example.tablesection.R
+import com.example.tablesection.customviews.RowView
 
 
 class Level2View(context: Context, columnCount : Int) : RowView(context,columnCount) {
@@ -19,7 +18,7 @@ class Level2View(context: Context, columnCount : Int) : RowView(context,columnCo
 
 
     init {
-        val stickyColumnView = View.inflate(context,R.layout.level2stickycolumn,null)
+        val stickyColumnView = View.inflate(context, R.layout.level2stickycolumn,null)
         stickyColumnView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT)
         this.stickyColumnView = stickyColumnView
         addStickyColumn(stickyColumnView)

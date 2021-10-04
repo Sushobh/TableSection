@@ -1,19 +1,16 @@
 package com.example.tablesection
 
 import android.os.Build
-import android.util.Log
-import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tablesection.RViewSectionListener
-import com.example.tablesection.SectionGroupWithSticky
-import com.example.tablesection.StickyHeaders
-import com.sushobh.section.RViewSection
-import java.lang.Exception
+import com.example.tablesection.sectioning.RViewSectionListener
+import com.example.tablesection.sectioning.SectionGroupWithSticky
+import com.example.tablesection.sectioning.RViewSection
+import com.example.tablesection.sticky.StickyHeaders
 
 class MyAdapter(private  val sectionGroup : SectionGroupWithSticky<*>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
-    RViewSectionListener,
+        RViewSectionListener,
     StickyHeaders by sectionGroup,
     StickyHeaders.ViewSetup by sectionGroup{
 

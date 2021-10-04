@@ -1,10 +1,9 @@
-package com.sushobh.section
+package com.example.tablesection.sectioning
 
 import android.os.Build
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tablesection.RViewSectionListener
 
 import java.lang.Exception
 import java.util.*

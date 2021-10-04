@@ -1,14 +1,13 @@
-package com.example.tablesection
+package com.example.tablesection.customviews
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.updateLayoutParams
+import com.example.tablesection.R
 
 class CellHeaderView : LinearLayout {
     constructor(context: Context?) : super(context)
@@ -28,7 +27,7 @@ class CellHeaderView : LinearLayout {
 
 
     init {
-        View.inflate(context,R.layout.cell_header,this)
+        View.inflate(context, R.layout.cell_header,this)
         gravity = Gravity.END
         layoutParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
     }

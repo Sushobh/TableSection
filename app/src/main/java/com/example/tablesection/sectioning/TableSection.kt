@@ -1,12 +1,14 @@
-package com.example.tablesection
+package com.example.tablesection.sectioning
 
 import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
-import android.widget.HorizontalScrollView
 import androidx.recyclerview.widget.RecyclerView
-import com.sushobh.section.RViewSection
-import com.sushobh.section.ViewInfoTag
+import com.example.tablesection.MyAdapter
+import com.example.tablesection.R
+import com.example.tablesection.customviews.*
+import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
+import com.example.tablesection.customviews.ViewInfoTag
 import java.lang.Exception
 
 abstract class TableSection(val viewTypes : ArrayList<Int>,
@@ -14,7 +16,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                             val tag : ViewInfoTag, listView : RecyclerView
   ) : RViewSection(){
 
-    public interface HasScrollableView <X> where X : StickyHeadersLinearLayoutManager.Scrollable,X : RowView{
+    public interface HasScrollableView <X> where X : StickyHeadersLinearLayoutManager.Scrollable, X : RowView {
         fun getScrollableView() : X
     }
 

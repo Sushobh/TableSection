@@ -1,8 +1,7 @@
-package com.sushobh.section
+package com.example.tablesection.sectioning
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tablesection.RViewSectionListener
 
 abstract class RViewSection() {
     lateinit var listener : RViewSectionListener

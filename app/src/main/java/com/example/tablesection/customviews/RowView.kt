@@ -1,20 +1,19 @@
-package com.example.tablesection
+package com.example.tablesection.customviews
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.util.DisplayMetrics
-import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import androidx.core.view.updateLayoutParams
+import com.example.tablesection.R
+import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
 
 
 open class RowView(
     context: Context?, var columnCount: Int
-) : LinearLayout(context),StickyHeadersLinearLayoutManager.Scrollable {
+) : LinearLayout(context), StickyHeadersLinearLayoutManager.Scrollable {
 
     protected  var stickyColumnHolder : LinearLayout
     protected  var scrollView : NoFlingScrollView

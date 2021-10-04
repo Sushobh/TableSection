@@ -1,4 +1,4 @@
-package com.example.tablesection;
+package com.example.tablesection.sticky;
 
 import android.view.View;
 
