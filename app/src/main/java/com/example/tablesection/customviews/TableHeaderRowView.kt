@@ -6,10 +6,14 @@ import android.view.View
 import android.widget.LinearLayout
 import com.example.tablesection.R
 
-class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : Array<Int>) : RowView(context,columnCount) {
+class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : Array<Int>,val sortClickListener: SortClickListener) : RowView(context,columnCount) {
 
     private lateinit var stickyColumnCell : CellHeaderView
     private  var cells = arrayListOf<CellHeaderView>()
+
+    public interface SortClickListener {
+        fun sortClicked(headerPos : Int,isSticky : Boolean)
+    }
 
 
 
@@ -30,6 +34,9 @@ class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : A
         stickyColumnCell = CellHeaderView(context)
         stickyColumnCell.layoutParams = LinearLayout.
             LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
+        stickyColumnCell.setOnClickListener {
+            sortClickListener.sortClicked(-1,true)
+        }
         val stickyCellWithDivider = View.inflate(context, R.layout.table_header_sticky_cell,null)
         stickyCellWithDivider.findViewById<LinearLayout>(R.id.stick_cell_holder).addView(stickyColumnCell)
         stickyCellWithDivider.layoutParams = LinearLayout.
@@ -40,6 +47,9 @@ class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : A
             cells.add(CellHeaderView(context))
             addColumn(cells[i],columnWidths[i],i)
             cells[i].bindData(data.cellHeaderList[i])
+            cells[i].setOnClickListener {
+                sortClickListener.sortClicked(i,false)
+            }
         }
     }
 

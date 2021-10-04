@@ -17,6 +17,15 @@ class ExampleTableSection(viewTypes : ArrayList<Int>, val dummyData: DummyData, 
 StickyHeadersLinearLayoutManager<MyAdapter>, viewInfoTag: ViewInfoTag, listView : RecyclerView) : TableSection(viewTypes,layoutManager,viewInfoTag,listView) {
 
     val stickyColumnHeaderName = "Description"
+    private lateinit var headerCols : TableHeaderRowView.TableHeaderData
+
+    init {
+        val cols = arrayListOf<CellHeader>()
+        for(i in 0..getColumnCount()-1){
+            cols.add(CellHeader("Column ${i}", CellHeader.CellHeaderStatus.DEFAULT))
+        }
+        headerCols = TableHeaderRowView.TableHeaderData(CellHeader(stickyColumnHeaderName, CellHeader.CellHeaderStatus.DEFAULT),cols)
+    }
 
     override fun getLevel2ViewHolder(view: Level2View): RecyclerView.ViewHolder {
         return Level2ViewHolder(view)
@@ -39,11 +48,7 @@ StickyHeadersLinearLayoutManager<MyAdapter>, viewInfoTag: ViewInfoTag, listView 
     }
 
     override fun getHeaderColumns(): TableHeaderRowView.TableHeaderData {
-        val cols = arrayListOf<CellHeader>()
-        for(i in 0..getColumnCount()-1){
-            cols.add(CellHeader("Column ${i}", CellHeader.CellHeaderStatus.DEFAULT))
-        }
-        return TableHeaderRowView.TableHeaderData(CellHeader(stickyColumnHeaderName, CellHeader.CellHeaderStatus.DEFAULT),cols)
+        return headerCols
     }
 
     override fun getLevel2CellView(columnPosition: Int,rootView : ViewGroup): View {
@@ -64,6 +69,47 @@ StickyHeadersLinearLayoutManager<MyAdapter>, viewInfoTag: ViewInfoTag, listView 
         return cellView
     }
 
+    override fun getSortClickListener(): TableHeaderRowView.SortClickListener {
+        return object : TableHeaderRowView.SortClickListener {
+            override fun sortClicked(headerPos: Int, isSticky: Boolean) {
+                if(isSticky){
+                    if(headerCols.stickyCell.cellStatus == CellHeader.CellHeaderStatus.DEFAULT){
+                        headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.ASC
+                    }
+                    else if(headerCols.stickyCell.cellStatus == CellHeader.CellHeaderStatus.ASC){
+                        headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.DESC
+                    }
+                    else if(headerCols.stickyCell.cellStatus == CellHeader.CellHeaderStatus.DESC){
+                        headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.ASC
+                    }
+                    headerCols.cellHeaderList.forEach {
+                        it.cellStatus = CellHeader.CellHeaderStatus.DEFAULT
+                    }
+                }
+                else {
+                    headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.DEFAULT
+
+                    if(headerCols.cellHeaderList[headerPos].cellStatus == CellHeader.CellHeaderStatus.DEFAULT){
+                        headerCols.cellHeaderList[headerPos].cellStatus = CellHeader.CellHeaderStatus.ASC
+                    }
+                    else if(headerCols.cellHeaderList[headerPos].cellStatus == CellHeader.CellHeaderStatus.ASC){
+                        headerCols.cellHeaderList[headerPos].cellStatus = CellHeader.CellHeaderStatus.DESC
+                    }
+                    else if(headerCols.cellHeaderList[headerPos].cellStatus == CellHeader.CellHeaderStatus.DESC){
+                        headerCols.cellHeaderList[headerPos].cellStatus = CellHeader.CellHeaderStatus.ASC
+                    }
+                    headerCols.cellHeaderList.forEach {
+                        if(it != headerCols.cellHeaderList[headerPos]){
+                            it.cellStatus = CellHeader.CellHeaderStatus.DEFAULT
+                        }
+                    }
+                }
+                listener.itemRangeChanged(0,getLength()-1,this@ExampleTableSection)
+            }
+        }
+
+    }
+
     override fun getDataLength(): Int {
         return dummyData.otherRows.size
     }
@@ -79,6 +125,7 @@ StickyHeadersLinearLayoutManager<MyAdapter>, viewInfoTag: ViewInfoTag, listView 
             viewHolder.view.header1.text = data.header1
             viewHolder.view.header2.text = data.header2
             viewHolder.view.header3.text = data.header3
+            viewHolder.view.tableHeaderView.bindData(headerCols)
         }
         if(viewHolder is Level2ViewHolder){
              val data = dummyData.otherRows[position-1] as Level2Data

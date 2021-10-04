@@ -31,6 +31,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
     abstract fun getLevel2CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
     abstract fun getLevel3CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
     abstract fun getLevel4CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
+    abstract fun getSortClickListener() : TableHeaderRowView.SortClickListener
     abstract fun getDataLength() : Int
 
     protected var currentScroll = 0
@@ -93,7 +94,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
 
     override fun getViewHolder(viewType: Int, parent: ViewGroup): RecyclerView.ViewHolder {
         if(viewType.equals(viewTypes.get(0))){
-            val tableHeaderRowView = TableHeaderRowView(parent.context,getColumnCount(),getColumnWidths().toTypedArray())
+            val tableHeaderRowView = TableHeaderRowView(parent.context,getColumnCount(),getColumnWidths().toTypedArray(),getSortClickListener())
             tableHeaderRowView.setData(getHeaderColumns())
             val level1View = Level1View(parent.context)
             level1View.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT)
