@@ -41,6 +41,10 @@ class Level1View : LinearLayout, StickyHeadersLinearLayoutManager.Scrollable {
 
     }
 
+    override fun flingForReal(velocityX: Int) {
+        tableHeaderView.flingForReal(velocityX)
+    }
+
     override fun scrollTo(dx: Int){
         tableHeaderView.scrollTo(dx)
     }

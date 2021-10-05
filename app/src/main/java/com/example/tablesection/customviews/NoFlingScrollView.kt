@@ -11,7 +11,17 @@ class NoFlingScrollView : HorizontalScrollView {
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
 
 
-    override fun fling(velocityX: Int) {
+    public interface FlingListener {
+        fun onFling(velocity : Int)
+    }
 
+    var flingListener : FlingListener? = null
+
+    override fun fling(velocityX: Int) {
+        flingListener?.onFling(velocityX)
+    }
+
+    fun flingForReal(velocityX: Int){
+        super.fling(velocityX)
     }
 }

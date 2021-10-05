@@ -22,6 +22,9 @@ open class RowView(
 
 
 
+    fun addFlingListener(flingListener: NoFlingScrollView.FlingListener){
+        scrollView.flingListener = flingListener
+    }
 
 
 
@@ -61,6 +64,10 @@ open class RowView(
 
     fun getStickyColumnHolder() : ViewGroup {
         return stickyColumnHolder
+    }
+
+    override fun flingForReal(velocityX: Int) {
+        scrollView.flingForReal(velocityX)
     }
 
     override fun scrollTo(dx: Int){

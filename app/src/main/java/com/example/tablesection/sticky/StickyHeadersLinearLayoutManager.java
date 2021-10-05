@@ -802,6 +802,7 @@ public class StickyHeadersLinearLayoutManager<T extends RecyclerView.Adapter & S
     }
 
     public interface Scrollable {
+        void flingForReal(int velocityX);
         void scrollTo(int dx);
         void addHorizontalScrollListener(View.OnScrollChangeListener listener);
     }
