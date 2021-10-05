@@ -7,6 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
+        android:textSize="@dimen/hd_12sp"
         android:gravity="end"
         android:textAlignment="textEnd"
         android:id="@+id/text_view"
@@ -15,5 +16,15 @@
         tools:text="Symbol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/sort_indicator"
+        android:layout_marginStart="@dimen/hd_2dp"
+        android:src="@drawable/ic_sort"
+        app:layout_constraintBottom_toBottomOf="@id/text_view"
+        app:layout_constraintTop_toTopOf="@+id/text_view"
+        app:layout_constraintStart_toEndOf="@+id/text_view"
+        android:layout_width="@dimen/hd_12dp"
+        android:layout_height="@dimen/hd_12dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

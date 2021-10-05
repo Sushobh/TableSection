@@ -1,9 +1,11 @@
 package com.example.tablesection.customviews
 
 import android.content.Context
+import android.media.Image
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.updateLayoutParams
@@ -37,13 +39,16 @@ class CellHeaderView : LinearLayout {
     fun bindData(cellHeader: CellHeader){
         when(cellHeader.cellStatus){
             CellHeader.CellHeaderStatus.ASC -> {
-                findViewById<TextView>(R.id.text_view).setText(context.getString(R.string.cell_header_up,cellHeader.text))
+                findViewById<TextView>(R.id.text_view).setText(cellHeader.text)
+                findViewById<ImageView>(R.id.sort_indicator).setImageResource(R.drawable.ic_sort_ascending)
             }
             CellHeader.CellHeaderStatus.DESC -> {
-                findViewById<TextView>(R.id.text_view).setText(context.getString(R.string.cell_header_down,cellHeader.text))
+                findViewById<TextView>(R.id.text_view).setText(cellHeader.text)
+                findViewById<ImageView>(R.id.sort_indicator).setImageResource(R.drawable.ic_sort_descending)
             }
             CellHeader.CellHeaderStatus.DEFAULT -> {
-                findViewById<TextView>(R.id.text_view).setText(context.getString(R.string.cell_header_default,cellHeader.text))
+                findViewById<TextView>(R.id.text_view).setText(cellHeader.text)
+                findViewById<ImageView>(R.id.sort_indicator).setImageResource(R.drawable.ic_sort)
             }
         }
         cellHeader.columnWidth?.let {

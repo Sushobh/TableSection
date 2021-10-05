@@ -38,6 +38,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
     abstract fun getDataLength() : Int
 
     protected var currentScroll = 0
+    protected var infoIconSpaceWidth = 150
 
     private val scrollChangeListener : View.OnScrollChangeListener =  @SuppressLint("NewApi")
 
@@ -117,6 +118,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         if(viewType.equals(viewTypes.get(0))){
             val tableHeaderRowView = TableHeaderRowView(parent.context,getColumnCount(),getColumnWidths().toTypedArray(),getSortClickListener())
             tableHeaderRowView.setData(getHeaderColumns())
+            tableHeaderRowView.addInfoIconSpace(infoIconSpaceWidth)
             val level1View = Level1View(parent.context)
             level1View.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT)
             level1View.addTableHeaderView(tableHeaderRowView)
@@ -143,6 +145,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                for(i in 0..getColumnCount()-1){
                    level2View.addColumn(getLevel2CellView(i,parent),getColumnWidth(i),i)
                }
+               level2View.addInfoIconSpace(infoIconSpaceWidth)
                level2View.addHorizontalScrollListener(scrollChangeListener)
                level2View.addFlingListener(flingListener)
                level2View.tag = tag
@@ -154,6 +157,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             for(i in 0..getColumnCount()-1){
                 level3View.addColumn(getLevel3CellView(i,parent),getColumnWidth(i),i)
             }
+            level3View.addInfoIconSpace(infoIconSpaceWidth)
             level3View.addHorizontalScrollListener(scrollChangeListener)
             level3View.addFlingListener(flingListener)
             level3View.tag = tag
@@ -166,6 +170,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             for(i in 0..getColumnCount()-1){
                 level4View.addColumn(getLevel4CellView(i,parent),getColumnWidth(i),i)
             }
+            level4View.addInfoIconSpace(infoIconSpaceWidth)
             level4View.addHorizontalScrollListener(scrollChangeListener)
             level4View.addFlingListener(flingListener)
             level4View.tag = tag

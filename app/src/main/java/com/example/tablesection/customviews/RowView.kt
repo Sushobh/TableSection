@@ -2,7 +2,9 @@ package com.example.tablesection.customviews
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.util.DisplayMetrics
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -19,6 +21,7 @@ open class RowView(
     protected  var scrollView : NoFlingScrollView
     private    var columnsHolder : LinearLayout
     private    var cellHoldersList = arrayListOf<LinearLayout>()
+    var infoIconSpace : LinearLayout? = null
 
 
 
@@ -56,6 +59,16 @@ open class RowView(
             width = parentWidth
         }
         cellHoldersList[index].addView(view)
+    }
+
+    fun addInfoIconSpace(width : Int){
+        val params = LayoutParams(width, LinearLayout.LayoutParams.MATCH_PARENT)
+        val layout = LinearLayout(context)
+        layout.layoutParams = params
+        layout.orientation = LinearLayout.VERTICAL
+        layout.gravity = Gravity.CENTER
+        columnsHolder.addView(layout)
+        infoIconSpace = layout
     }
 
     fun getColumnHolder(pos : Int) : ViewGroup{
