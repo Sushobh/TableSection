@@ -1,6 +1,7 @@
 package com.example.tablesection
 
 import android.content.Context
+import android.graphics.Canvas
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -106,6 +107,7 @@ StickyHeadersLinearLayoutManager<MyAdapter>, viewInfoTag: ViewInfoTag, listView 
                 }
                 dummyData.otherRows.reverse()
                 listener.itemRangeChanged(0,getLength()-1,this@ExampleTableSection)
+                var canvas : Canvas? = null
             }
         }
 

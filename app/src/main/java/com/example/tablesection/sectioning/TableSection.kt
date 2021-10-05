@@ -64,11 +64,11 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         if(viewHolder is Level1ViewHolder){
             if(isExpanded){
                 viewHolder.view.tableHeaderView.visibility = View.VISIBLE
-                viewHolder.view.expandIndicator.setImageDrawable(viewHolder.itemView.context.getDrawable(R.drawable.ic_hd_up_arrow))
+                viewHolder.view.expandIndicator.scaleY = 1.0f
             }
             else {
-                viewHolder.view.expandIndicator.setImageDrawable(viewHolder.itemView.context.getDrawable(R.drawable.ic_hd_down_arrow))
                 viewHolder.view.tableHeaderView.visibility = View.GONE
+                viewHolder.view.expandIndicator.scaleY = -1.0f
             }
         }
         if(viewHolder is HasScrollableView<*>){
