@@ -7,6 +7,8 @@ import com.example.tablesection.data.getDummyData
 import com.example.tablesection.sectioning.SectionGroupWithSticky
 import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
 import com.example.tablesection.customviews.ViewInfoTag
+import com.example.tablesection.data.DummyData
+import kotlin.coroutines.suspendCoroutine
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,5 +36,16 @@ class MainActivity : AppCompatActivity() {
         groupWithSticky.addSection(exampleTableSectio3)
         listView.adapter = adapter
 
+
+
     }
+
+
+    suspend fun getData(){
+        suspendCoroutine<DummyData> {
+             getDummyData()
+        }
+    }
+
+
 }

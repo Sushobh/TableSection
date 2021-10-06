@@ -28,6 +28,7 @@ class BorderDecoration : RecyclerView.ItemDecoration() {
               bottom = bottom+bounds.bottom
            }
         }
+
     }
 
     private fun requiresYellowBorder(child : View) : Boolean {
