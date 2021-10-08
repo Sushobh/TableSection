@@ -18,13 +18,14 @@ class MainActivity : AppCompatActivity() {
         val listView = findViewById<RecyclerView>(R.id.list_view)
         val layoutManager = StickyHeadersLinearLayoutManager<MyAdapter>(this)
         listView.layoutManager = layoutManager
-
+        val headerRowHeight = 200
+        val rowHeight = 600
         val exampleTableSection = ExampleTableSection(arrayListOf(1,2,3,4), getDummyData(),this,layoutManager,
-            ViewInfoTag("1"),listView)
+            ViewInfoTag("1"),listView,rowHeight,headerRowHeight)
         val exampleTableSectio2 = ExampleTableSection(arrayListOf(5,6,7,8), getDummyData(),this,layoutManager,
-                ViewInfoTag("2"),listView)
+                ViewInfoTag("2"),listView,rowHeight,headerRowHeight)
         val exampleTableSectio3 = ExampleTableSection(arrayListOf(9,10,11,12), getDummyData(),this,layoutManager,
-                ViewInfoTag("3"),listView)
+                ViewInfoTag("3"),listView,rowHeight,headerRowHeight)
         val groupWithSticky = SectionGroupWithSticky<ExampleTableSection>()
         exampleTableSection.listener = groupWithSticky
         exampleTableSectio2.listener = groupWithSticky

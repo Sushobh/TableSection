@@ -8,13 +8,14 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.updateLayoutParams
 import com.example.tablesection.R
 import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
 
 
 open class RowView(
-    context: Context?, var columnCount: Int
+    context: Context?, var columnCount: Int,val requiredHeight : Int
 ) : LinearLayout(context), StickyHeadersLinearLayoutManager.Scrollable {
 
     protected  var stickyColumnHolder : LinearLayout
@@ -33,11 +34,16 @@ open class RowView(
 
     init {
         inflate(context, R.layout.row_view, this)
+        postDelayed({
+            getChildAt(0).layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,requiredHeight)
+        },100)
         stickyColumnHolder = findViewById(R.id.sticky_column_cell)
         scrollView = findViewById(R.id.scroll_row)
         columnsHolder = findViewById(R.id.columns_holder)
         addColumnSpace()
     }
+
+
 
     private fun addColumnSpace(){
         for(i in 0..columnCount-1){

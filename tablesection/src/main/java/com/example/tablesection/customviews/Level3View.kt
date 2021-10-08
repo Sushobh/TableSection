@@ -6,7 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.tablesection.R
 
-class Level3View(context: Context, columnCount : Int) : RowView(context,columnCount) {
+class Level3View(context: Context, columnCount : Int,requiredHeight : Int) : RowView(context,columnCount,requiredHeight) {
 
     private var stickyColumnView : View
 

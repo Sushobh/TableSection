@@ -16,7 +16,7 @@ import java.util.logging.Handler
 
 abstract class TableSection(val viewTypes : ArrayList<Int>,
                             val stickyHeadersLinearLayoutManager: StickyHeadersLinearLayoutManager<MyAdapter>,
-                            val tag : ViewInfoTag, listView : RecyclerView
+                            val tag : ViewInfoTag, listView : RecyclerView,val rowHeight : Int,val headerRowHeight : Int
   ) : RViewSection(){
 
     public interface HasScrollableView <X> where X : StickyHeadersLinearLayoutManager.Scrollable, X : RowView {
@@ -116,7 +116,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
 
     override fun getViewHolder(viewType: Int, parent: ViewGroup): RecyclerView.ViewHolder {
         if(viewType.equals(viewTypes.get(0))){
-            val tableHeaderRowView = TableHeaderRowView(parent.context,getColumnCount(),getColumnWidths().toTypedArray(),getSortClickListener())
+            val tableHeaderRowView = TableHeaderRowView(parent.context,getColumnCount(),getColumnWidths().toTypedArray(),getSortClickListener(),headerRowHeight)
             tableHeaderRowView.setData(getHeaderColumns())
             tableHeaderRowView.addInfoIconSpace(infoIconSpaceWidth)
             val level1View = Level1View(parent.context)
@@ -140,7 +140,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             return Level1ViewHolder(level1View)
         }
         else if(viewType.equals(viewTypes.get(1))){
-               val level2View = Level2View(parent.context,getColumnCount())
+               val level2View = Level2View(parent.context,getColumnCount(),rowHeight)
                level2View.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT)
                for(i in 0..getColumnCount()-1){
                    level2View.addColumn(getLevel2CellView(i,parent),getColumnWidth(i),i)
@@ -152,7 +152,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                return getLevel2ViewHolder(level2View)
         }
         else if(viewType.equals(viewTypes.get(2))){
-            val level3View = Level3View(parent.context,getColumnCount())
+            val level3View = Level3View(parent.context,getColumnCount(),rowHeight)
             level3View.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT)
             for(i in 0..getColumnCount()-1){
                 level3View.addColumn(getLevel3CellView(i,parent),getColumnWidth(i),i)
@@ -165,7 +165,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         }
 
         else if(viewType.equals(viewTypes.get(3))){
-            val level4View = Level4View(parent.context,getColumnCount())
+            val level4View = Level4View(parent.context,getColumnCount(),rowHeight)
             level4View.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT)
             for(i in 0..getColumnCount()-1){
                 level4View.addColumn(getLevel4CellView(i,parent),getColumnWidth(i),i)

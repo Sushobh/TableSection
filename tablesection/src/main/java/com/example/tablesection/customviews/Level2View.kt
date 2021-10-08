@@ -8,7 +8,7 @@ import com.example.tablesection.R
 import com.example.tablesection.customviews.RowView
 
 
-class Level2View(context: Context, columnCount : Int) : RowView(context,columnCount) {
+class Level2View(context: Context, columnCount : Int,requirdHeight : Int) : RowView(context,columnCount,requirdHeight) {
 
     private var stickyColumnView : View
 

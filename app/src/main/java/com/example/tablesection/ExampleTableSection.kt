@@ -2,6 +2,7 @@ package com.example.tablesection
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,8 @@ import com.example.tablesection.sectioning.TableSection
 import java.lang.Exception
 
 class ExampleTableSection(viewTypes : ArrayList<Int>, val dummyData: DummyData, val context: Context, layoutManager:
-StickyHeadersLinearLayoutManager<MyAdapter>, viewInfoTag: ViewInfoTag, listView : RecyclerView) : TableSection(viewTypes,layoutManager,viewInfoTag,listView) {
+StickyHeadersLinearLayoutManager<MyAdapter>, viewInfoTag: ViewInfoTag, listView : RecyclerView,rowHeight : Int,headerRowHeight : Int) :
+        TableSection(viewTypes,layoutManager,viewInfoTag,listView,rowHeight,headerRowHeight) {
 
     val stickyColumnHeaderName = "Description"
     private lateinit var headerCols : TableHeaderRowView.TableHeaderData

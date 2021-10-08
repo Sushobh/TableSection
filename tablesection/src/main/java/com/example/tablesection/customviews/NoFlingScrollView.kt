@@ -18,7 +18,7 @@ class NoFlingScrollView : HorizontalScrollView {
     var flingListener : FlingListener? = null
 
     override fun fling(velocityX: Int) {
-        flingListener?.onFling(velocityX)
+        //flingListener?.onFling(velocityX)
     }
 
     fun flingForReal(velocityX: Int){

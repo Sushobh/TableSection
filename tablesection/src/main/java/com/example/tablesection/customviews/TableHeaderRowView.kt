@@ -6,7 +6,8 @@ import android.view.View
 import android.widget.LinearLayout
 import com.example.tablesection.R
 
-class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : Array<Int>,val sortClickListener: SortClickListener) : RowView(context,columnCount) {
+class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : Array<Int>,val sortClickListener: SortClickListener,requiredHeight : Int) :
+        RowView(context,columnCount,requiredHeight) {
 
     private lateinit var stickyColumnCell : CellHeaderView
     private  var cells = arrayListOf<CellHeaderView>()

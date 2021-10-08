@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="0dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/sticky_column_cell"
         android:layout_width="@dimen/sticky_column_width"
-        android:layout_height="@dimen/column_height"/>
+        android:layout_height="match_parent"/>
     <com.example.tablesection.customviews.NoFlingScrollView
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +23,7 @@
         app:layout_constraintStart_toEndOf="@+id/sticky_column_cell"
         android:id="@+id/scroll_row"
         android:layout_width="0dp"
-        android:layout_height="@dimen/column_height">
+        android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/columns_holder"
             android:orientation="horizontal"

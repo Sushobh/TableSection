@@ -7,6 +7,7 @@ class SectionGroupWithSticky <X : TableSection>: RViewSectionGroup<X>(arrayListO
 
 
     override fun isStickyHeader(position: Int): Boolean {
+
         sections.forEach {
             if(getAdapterStartPosition(it) == position){
                 return true

@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.updateLayoutParams
 import com.example.tablesection.R
 import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
 
@@ -58,4 +59,6 @@ class Level1View : LinearLayout, StickyHeadersLinearLayoutManager.Scrollable {
         findViewById<LinearLayout>(R.id.table_header_holder).addView(tableHeaderRowView)
         this.tableHeaderView = tableHeaderRowView
     }
+
+
 }
