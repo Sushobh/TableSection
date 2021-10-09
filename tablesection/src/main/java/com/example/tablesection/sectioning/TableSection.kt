@@ -1,6 +1,7 @@
 package com.example.tablesection.sectioning
 
 import android.annotation.SuppressLint
+import android.graphics.Canvas
 import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
@@ -30,15 +31,16 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
 
     abstract fun getColumnWidth(columnPosition: Int) : Int
     abstract fun getColumnCount() : Int
-    abstract fun getHeaderColumns() : TableHeaderRowView.TableHeaderData
     abstract fun getLevel2CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
     abstract fun getLevel3CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
     abstract fun getLevel4CellView(columnPosition: Int,rootViewGroup: ViewGroup) : View
-    abstract fun getSortClickListener() : TableHeaderRowView.SortClickListener
+    abstract fun onSortClicked(headerPos: Int, isSticky: Boolean)
     abstract fun getDataLength() : Int
+    abstract fun getHeaderData() : TableHeaderRowView.TableHeaderData
 
     protected var currentScroll = 0
     protected var infoIconSpaceWidth = 150
+    private lateinit var headerCols : TableHeaderRowView.TableHeaderData
 
     private val scrollChangeListener : View.OnScrollChangeListener =  @SuppressLint("NewApi")
 
@@ -92,6 +94,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                 viewHolder.view.tableHeaderView.visibility = View.GONE
                 viewHolder.view.expandIndicator.scaleY = -1.0f
             }
+            viewHolder.view.tableHeaderView.bindData(headerCols)
         }
         if(viewHolder is HasScrollableView<*>){
             if(viewHolder.getScrollableView() is View){
@@ -114,10 +117,54 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         return viewTypes.contains(viewType)
     }
 
+    fun getSortClickListener(): TableHeaderRowView.SortClickListener {
+        return object : TableHeaderRowView.SortClickListener {
+            override fun sortClicked(headerPos: Int, isSticky: Boolean) {
+                if(isSticky){
+                    if(headerCols.stickyCell.cellStatus == CellHeader.CellHeaderStatus.DEFAULT){
+                        headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.ASC
+                    }
+                    else if(headerCols.stickyCell.cellStatus == CellHeader.CellHeaderStatus.ASC){
+                        headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.DESC
+                    }
+                    else if(headerCols.stickyCell.cellStatus == CellHeader.CellHeaderStatus.DESC){
+                        headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.ASC
+                    }
+                    headerCols.cellHeaderList.forEach {
+                        it.cellStatus = CellHeader.CellHeaderStatus.DEFAULT
+                    }
+                }
+                else {
+                    headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.DEFAULT
+
+                    if(headerCols.cellHeaderList[headerPos].cellStatus == CellHeader.CellHeaderStatus.DEFAULT){
+                        headerCols.cellHeaderList[headerPos].cellStatus = CellHeader.CellHeaderStatus.ASC
+                    }
+                    else if(headerCols.cellHeaderList[headerPos].cellStatus == CellHeader.CellHeaderStatus.ASC){
+                        headerCols.cellHeaderList[headerPos].cellStatus = CellHeader.CellHeaderStatus.DESC
+                    }
+                    else if(headerCols.cellHeaderList[headerPos].cellStatus == CellHeader.CellHeaderStatus.DESC){
+                        headerCols.cellHeaderList[headerPos].cellStatus = CellHeader.CellHeaderStatus.ASC
+                    }
+                    headerCols.cellHeaderList.forEach {
+                        if(it != headerCols.cellHeaderList[headerPos]){
+                            it.cellStatus = CellHeader.CellHeaderStatus.DEFAULT
+                        }
+                    }
+                }
+                with(this@TableSection){
+                    onSortClicked(headerPos,isSticky)
+                    listener.itemRangeChanged(0,getLength()-1,this)
+                }
+            }
+
+        }
+    }
+
     override fun getViewHolder(viewType: Int, parent: ViewGroup): RecyclerView.ViewHolder {
         if(viewType.equals(viewTypes.get(0))){
             val tableHeaderRowView = TableHeaderRowView(parent.context,getColumnCount(),getColumnWidths().toTypedArray(),getSortClickListener(),headerRowHeight)
-            tableHeaderRowView.setData(getHeaderColumns())
+            tableHeaderRowView.setData(getHeaderData().also { headerCols = it })
             tableHeaderRowView.addInfoIconSpace(infoIconSpaceWidth)
             val level1View = Level1View(parent.context)
             level1View.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT)
@@ -210,6 +257,8 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         }
         return widthArray
     }
+
+
 
     fun afterStickyIsLaidOut(stickyView: Level1View) {
         stickyView.scrollTo(currentScroll)

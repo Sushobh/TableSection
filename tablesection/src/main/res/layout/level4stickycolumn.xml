@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         layout="@layout/yellow_divider"/>
     <ImageView
-        android:layout_marginStart="@dimen/hd_4dp"
+        android:paddingStart="@dimen/hd_12dp"
         android:id="@+id/ic_indicator"
         app:layout_constraintBottom_toBottomOf="@+id/sticky_col_text_view"
         app:layout_constraintTop_toTopOf="@+id/sticky_col_text_view"
@@ -24,13 +24,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
+        android:layout_marginStart="@dimen/hd_8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/sticky_col_text_view"
         android:textSize="@dimen/hd_12sp"
         tools:text="Sticky Column"
-        android:padding="@dimen/hd_12dp"
         app:layout_constraintStart_toEndOf="@+id/ic_indicator"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,6 +34,9 @@ class CellHeaderView : LinearLayout {
         layoutParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
     }
 
+    fun setContentGravity(newGravity : Int){
+        gravity = newGravity
+    }
 
 
     fun bindData(cellHeader: CellHeader){

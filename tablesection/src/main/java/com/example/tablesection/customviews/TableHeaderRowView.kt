@@ -2,6 +2,7 @@ package com.example.tablesection.customviews
 
 import android.content.Context
 import android.graphics.Color
+import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import com.example.tablesection.R
@@ -38,6 +39,8 @@ class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : A
         stickyColumnCell.setOnClickListener {
             sortClickListener.sortClicked(-1,true)
         }
+        stickyColumnCell.setContentGravity(Gravity.CENTER)
+        stickyColumnCell.paddingRight
         val stickyCellWithDivider = View.inflate(context, R.layout.table_header_sticky_cell,null)
         stickyCellWithDivider.findViewById<LinearLayout>(R.id.stick_cell_holder).addView(stickyColumnCell)
         stickyCellWithDivider.layoutParams = LinearLayout.

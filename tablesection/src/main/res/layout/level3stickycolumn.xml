@@ -15,14 +15,13 @@
         app:layout_constraintTop_toTopOf="parent"
         layout="@layout/yellow_divider"/>
     <TextView
-
+        android:paddingStart="@dimen/hd_12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/sticky_col_text_view"
         android:textSize="@dimen/hd_12sp"
         tools:text="Sticky Column"
-        android:padding="@dimen/hd_12dp"
         app:layout_constraintStart_toEndOf="@+id/divider_horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
