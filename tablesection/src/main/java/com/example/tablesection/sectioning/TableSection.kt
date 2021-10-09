@@ -166,6 +166,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             val tableHeaderRowView = TableHeaderRowView(parent.context,getColumnCount(),getColumnWidths().toTypedArray(),getSortClickListener(),headerRowHeight)
             tableHeaderRowView.setData(getHeaderData().also { headerCols = it })
             tableHeaderRowView.addInfoIconSpace(infoIconSpaceWidth)
+            tableHeaderRowView.setNewHeight(headerRowHeight)
             val level1View = Level1View(parent.context)
             level1View.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT)
             level1View.addTableHeaderView(tableHeaderRowView)
@@ -192,6 +193,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                for(i in 0..getColumnCount()-1){
                    level2View.addColumn(getLevel2CellView(i,parent),getColumnWidth(i),i)
                }
+               level2View.setNewHeight(rowHeight)
                level2View.addInfoIconSpace(infoIconSpaceWidth)
                level2View.addHorizontalScrollListener(scrollChangeListener)
                level2View.addFlingListener(flingListener)
@@ -204,6 +206,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             for(i in 0..getColumnCount()-1){
                 level3View.addColumn(getLevel3CellView(i,parent),getColumnWidth(i),i)
             }
+            level3View.setNewHeight(rowHeight)
             level3View.addInfoIconSpace(infoIconSpaceWidth)
             level3View.addHorizontalScrollListener(scrollChangeListener)
             level3View.addFlingListener(flingListener)
@@ -217,6 +220,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             for(i in 0..getColumnCount()-1){
                 level4View.addColumn(getLevel4CellView(i,parent),getColumnWidth(i),i)
             }
+            level4View.setNewHeight(rowHeight)
             level4View.addInfoIconSpace(infoIconSpaceWidth)
             level4View.addHorizontalScrollListener(scrollChangeListener)
             level4View.addFlingListener(flingListener)

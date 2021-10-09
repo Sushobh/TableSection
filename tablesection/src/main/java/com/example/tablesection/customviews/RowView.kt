@@ -36,15 +36,16 @@ open class RowView(
 
     init {
         inflate(context, R.layout.row_view, this)
-        postDelayed({
-            getChildAt(0).layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,requiredHeight)
-        },100)
         stickyColumnHolder = findViewById(R.id.sticky_column_cell)
         scrollView = findViewById(R.id.scroll_row)
         columnsHolder = findViewById(R.id.columns_holder)
         bottomDivider = findViewById(R.id.bottom_divider_scroll_view)
         bottomDividerBiggerGrey = findViewById(R.id.bottom_divider_bigger_grey)
         addColumnSpace()
+    }
+
+    fun setNewHeight(height : Int){
+        getChildAt(0).layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,requiredHeight)
     }
 
 

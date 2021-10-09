@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         val listView = findViewById<RecyclerView>(R.id.list_view)
         val layoutManager = StickyHeadersLinearLayoutManager<MyAdapter>(this)
         listView.layoutManager = layoutManager
-        val headerRowHeight = 100
-        val rowHeight = 150
+        val headerRowHeight = 300
+        val rowHeight = 350
         val exampleTableSection = ExampleTableSection(arrayListOf(1,2,3,4), getDummyData(),this,layoutManager,
             ViewInfoTag("1"),listView,rowHeight,headerRowHeight)
         val exampleTableSectio2 = ExampleTableSection(arrayListOf(5,6,7,8), getDummyData(),this,layoutManager,
