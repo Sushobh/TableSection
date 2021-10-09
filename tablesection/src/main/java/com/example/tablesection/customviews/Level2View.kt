@@ -23,6 +23,7 @@ class Level2View(context: Context, columnCount : Int,requirdHeight : Int) : RowV
         this.stickyColumnView = stickyColumnView
         addStickyColumn(stickyColumnView)
         setBackgroundColor(context.getColor(R.color.level2yellow))
+        bottomDivider.visibility = View.GONE
     }
 
 

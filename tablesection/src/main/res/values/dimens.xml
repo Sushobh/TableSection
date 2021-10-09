@@ -12,4 +12,8 @@
     <dimen name="sticky_column_width">150dp</dimen>
     <dimen name="column_height">50dp</dimen>
     <dimen name="hd_2dp">2dp</dimen>
+    <dimen name="hd_1dp">1dp</dimen>
+    <dimen name="hd_30dp">30dp</dimen>
+    <dimen name="big_grey_level_4_divider_height">4dp</dimen>
+    <dimen name="yellow_left_divider_width">4dp</dimen>
 </resources>

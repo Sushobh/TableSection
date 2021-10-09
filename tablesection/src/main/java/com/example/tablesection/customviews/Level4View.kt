@@ -4,7 +4,9 @@ import android.content.Context
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.updateLayoutParams
 import com.example.tablesection.R
+import com.example.tablesection.convertDpToPixel
 
 class Level4View(context: Context, columnCount : Int,requiredHeight : Int) : RowView(context,columnCount,requiredHeight) {
 
@@ -22,6 +24,12 @@ class Level4View(context: Context, columnCount : Int,requiredHeight : Int) : Row
             LinearLayout.LayoutParams.MATCH_PARENT)
         this.stickyColumnView = stickyColumnView
         addStickyColumn(stickyColumnView)
+        bottomDivider.setBackgroundColor(context.getColor(R.color.divider_grey))
+    }
+
+    fun showBiggerGreyBottomDivider(){
+        bottomDivider.visibility = GONE
+        bottomDividerBiggerGrey.visibility = View.VISIBLE
     }
 
 

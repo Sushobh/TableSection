@@ -8,7 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <include
         android:id="@+id/divider_horizontal"
-        android:layout_width="@dimen/hd_4dp"
+        android:layout_width="@dimen/yellow_left_divider_width"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,4 +24,5 @@
         app:layout_constraintStart_toEndOf="@+id/divider_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

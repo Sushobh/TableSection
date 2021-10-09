@@ -22,6 +22,8 @@ open class RowView(
     protected  var scrollView : NoFlingScrollView
     private    var columnsHolder : LinearLayout
     private    var cellHoldersList = arrayListOf<LinearLayout>()
+    protected var bottomDivider : View
+    protected var bottomDividerBiggerGrey : View
     var infoIconSpace : LinearLayout? = null
 
 
@@ -40,6 +42,8 @@ open class RowView(
         stickyColumnHolder = findViewById(R.id.sticky_column_cell)
         scrollView = findViewById(R.id.scroll_row)
         columnsHolder = findViewById(R.id.columns_holder)
+        bottomDivider = findViewById(R.id.bottom_divider_scroll_view)
+        bottomDividerBiggerGrey = findViewById(R.id.bottom_divider_bigger_grey)
         addColumnSpace()
     }
 
@@ -98,10 +102,5 @@ open class RowView(
         scrollView.setOnScrollChangeListener(listener)
     }
 
-    companion object {
-        fun convertDpToPixel(dp: Float, context: Context): Float {
-            return dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
-        }
-    }
 
 }
