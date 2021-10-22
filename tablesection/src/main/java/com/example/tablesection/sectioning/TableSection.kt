@@ -172,6 +172,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             level1View.addTableHeaderView(tableHeaderRowView)
             level1View.addHorizontalScrollListener(scrollChangeListener)
             level1View.tableHeaderView.addFlingListener(flingListener)
+            level1View.translationZ = 100f
             level1View.tag = tag
             level1View.expandIndicator.setOnClickListener {
                 if(isExpanded){
