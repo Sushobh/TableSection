@@ -37,10 +37,11 @@ class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : A
         stickyColumnCell = CellHeaderView(context)
         stickyColumnCell.layoutParams = LinearLayout.
             LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
+
         stickyColumnCell.setOnClickListener {
             sortClickListener.sortClicked(-1,true)
         }
-        stickyColumnCell.setContentGravity(Gravity.CENTER)
+        stickyColumnCell.setContentGravity(Gravity.START)
         stickyColumnCell.paddingRight
         val stickyCellWithDivider = View.inflate(context, R.layout.table_header_sticky_cell,null)
         stickyCellWithDivider.findViewById<LinearLayout>(R.id.stick_cell_holder).addView(stickyColumnCell)

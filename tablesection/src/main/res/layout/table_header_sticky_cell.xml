@@ -14,6 +14,7 @@
         layout="@layout/yellow_divider"/>
 
     <LinearLayout
+        android:paddingStart="@dimen/hd_12dp"
         android:id="@+id/stick_cell_holder"
         android:layout_width="0dp"
         android:layout_height="match_parent"
