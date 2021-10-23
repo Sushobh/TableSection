@@ -3,6 +3,7 @@ package com.example.tablesection.sectioning
 import android.annotation.SuppressLint
 import android.graphics.Canvas
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.HorizontalScrollView
@@ -155,6 +156,9 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                 with(this@TableSection){
                     onSortClicked(headerPos,isSticky)
                     listener.itemRangeChanged(0,getLength()-1,this)
+                    android.os.Handler(Looper.getMainLooper()).postDelayed({
+                        syncScroll()
+                    },100)
                 }
             }
 
