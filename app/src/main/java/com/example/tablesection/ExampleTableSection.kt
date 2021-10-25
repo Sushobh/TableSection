@@ -1,8 +1,6 @@
 package com.example.tablesection
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +9,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tablesection.customviews.*
 import com.example.tablesection.data.*
+import com.example.tablesection.sectioning.RViewSectionListener
 import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
 import com.example.tablesection.sectioning.TableSection
 import java.lang.Exception
 
-class ExampleTableSection(viewTypes : ArrayList<Int>, val dummyData: DummyData, val context: Context, layoutManager:
-StickyHeadersLinearLayoutManager<MyAdapter>, viewInfoTag: ViewInfoTag, listView : RecyclerView,rowHeight : Int,headerRowHeight : Int) :
-        TableSection(viewTypes,layoutManager,viewInfoTag,listView,rowHeight,headerRowHeight) {
+class ExampleTableSection(viewTypes : ArrayList<Int>, listener: RViewSectionListener, val dummyData: DummyData, val context: Context, layoutManager:
+StickyHeadersLinearLayoutManager<SectioningStickyAdapter>, viewInfoTag: ViewInfoTag, listView : RecyclerView, rowHeight : Int, headerRowHeight : Int) :
+        TableSection(viewTypes,layoutManager,viewInfoTag,listView,rowHeight,headerRowHeight,listener) {
 
     val stickyColumnHeaderName = "Description"
 

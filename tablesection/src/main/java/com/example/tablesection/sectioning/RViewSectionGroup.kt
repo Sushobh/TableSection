@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import java.lang.Exception
 import java.util.*
 
-abstract class  RViewSectionGroup<X : RViewSection> (val sections : ArrayList<X>) : RViewSection(), RViewSectionListener {
+abstract class  RViewSectionGroup<X : RViewSection> (val sections : ArrayList<X>,sectionViewListener : RViewSectionListener) :
+        RViewSection(sectionViewListener), RViewSectionListener {
 
 
 
@@ -84,32 +85,32 @@ abstract class  RViewSectionGroup<X : RViewSection> (val sections : ArrayList<X>
 
     override fun itemRemoved(position: Int, section: RViewSection) {
         val startIndex = getSectionStartIndex(section)
-        listener.itemRemoved(startIndex+position,this)
+        getListener().itemRemoved(startIndex+position,this)
     }
 
     override fun itemRangeRemoved(position: Int, count: Int, section: RViewSection) {
         val startIndex = getSectionStartIndex(section)
-        listener.itemRangeRemoved(startIndex+position,count,this)
+        getListener().itemRangeRemoved(startIndex+position,count,this)
     }
 
     override fun itemAdded(position: Int, section: RViewSection) {
         val startIndex = getSectionStartIndex(section)
-        listener.itemAdded(startIndex+position,this)
+        getListener().itemAdded(startIndex+position,this)
     }
 
     override fun itemRangeAdded(position: Int, count: Int, section: RViewSection) {
         val startIndex = getSectionStartIndex(section)
-        listener.itemRangeAdded(startIndex+position,count,this)
+        getListener().itemRangeAdded(startIndex+position,count,this)
     }
 
     override fun itemChanged(position: Int,section : RViewSection) {
         val startIndex = getSectionStartIndex(section)
-        listener.itemChanged(startIndex+position,this)
+        getListener().itemChanged(startIndex+position,this)
     }
 
     override fun itemRangeChanged(position: Int, count: Int, section: RViewSection) {
         val startIndex = getSectionStartIndex(section)
-        listener.itemRangeChanged(startIndex+position,count,this)
+        getListener().itemRangeChanged(startIndex+position,count,this)
     }
 
     fun addSection(section : X,position: Int){
@@ -117,8 +118,8 @@ abstract class  RViewSectionGroup<X : RViewSection> (val sections : ArrayList<X>
         if(position <= lastValidIndex){
             sections.add(position,section)
             val startIndexForSection = getSectionStartIndex(section)
-            listener.itemRangeAdded(startIndexForSection,section.getLength(),this)
-
+            getListener().itemRangeAdded(startIndexForSection,section.getLength(),this)
+            section.enableEventsToAdapter(true)
         }
         else {
             throw Exception("Invalid position to add a new section to")
@@ -135,17 +136,25 @@ abstract class  RViewSectionGroup<X : RViewSection> (val sections : ArrayList<X>
         }
         val startIndexForSection = getSectionStartIndex(section)
         sections.remove(section)
-        listener.itemRangeRemoved(startIndexForSection,section.getLength(),this)
+        getListener().itemRangeRemoved(startIndexForSection,section.getLength(),this)
+        section.enableEventsToAdapter(false)
     }
 
     fun removeSection(index : Int){
         val section = sections[index]
         val startIndexForSection = getSectionStartIndex(section)
         sections.remove(section)
-        listener.itemRangeRemoved(startIndexForSection,section.getLength(),this)
+        getListener().itemRangeRemoved(startIndexForSection,section.getLength(),this)
     }
 
     override fun getAdapterStartPosition(section: RViewSection) : Int {
-        return listener.getAdapterStartPosition(this)+getSectionStartIndex(section)
+        return getListener().getAdapterStartPosition(this) ?: 0 + getSectionStartIndex(section)
+    }
+
+    override fun enableEventsToAdapter(flag: Boolean) {
+        super.enableEventsToAdapter(flag)
+        sections.forEach {
+            it.enableEventsToAdapter(flag)
+        }
     }
 }

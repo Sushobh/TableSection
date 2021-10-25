@@ -1,25 +1,20 @@
 package com.example.tablesection.sectioning
 
 import android.annotation.SuppressLint
-import android.graphics.Canvas
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.HorizontalScrollView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tablesection.MyAdapter
-import com.example.tablesection.R
+import com.example.tablesection.SectioningStickyAdapter
 import com.example.tablesection.customviews.*
 import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
 import com.example.tablesection.customviews.ViewInfoTag
 import java.lang.Exception
-import java.util.logging.Handler
 
 abstract class TableSection(val viewTypes : ArrayList<Int>,
-                            val stickyHeadersLinearLayoutManager: StickyHeadersLinearLayoutManager<MyAdapter>,
-                            val tag : ViewInfoTag, listView : RecyclerView,val rowHeight : Int,val headerRowHeight : Int
-  ) : RViewSection(){
+                            val stickyHeadersLinearLayoutManager: StickyHeadersLinearLayoutManager<SectioningStickyAdapter>,
+                            val tag : ViewInfoTag, listView : RecyclerView, val rowHeight : Int, val headerRowHeight : Int,
+                            listener: RViewSectionListener) : RViewSection(listener){
 
     public interface HasScrollableView <X> where X : StickyHeadersLinearLayoutManager.Scrollable, X : RowView {
         fun getScrollableView() : X
@@ -155,7 +150,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                 }
                 with(this@TableSection){
                     onSortClicked(headerPos,isSticky)
-                    listener.itemRangeChanged(0,getLength()-1,this)
+                    getListener().itemRangeChanged(0,getLength()-1,this)
                     android.os.Handler(Looper.getMainLooper()).postDelayed({
                         syncScroll()
                     },100)
@@ -181,13 +176,13 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             level1View.expandIndicator.setOnClickListener {
                 if(isExpanded){
                     isExpanded = false
-                    listener.itemRangeRemoved(1,getDataLength(),this)
-                    listener.itemChanged(0,this)
+                    getListener().itemRangeRemoved(1,getDataLength(),this)
+                    getListener().itemChanged(0,this)
                 }
                 else {
                     isExpanded = true
-                    listener.itemRangeAdded(1,getDataLength(),this)
-                    listener.itemChanged(0,this)
+                    getListener().itemRangeAdded(1,getDataLength(),this)
+                    getListener().itemChanged(0,this)
                 }
             }
             return Level1ViewHolder(level1View)

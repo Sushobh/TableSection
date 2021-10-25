@@ -7,20 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tablesection.sectioning.RViewSectionListener
 import com.example.tablesection.sectioning.SectionGroupWithSticky
 import com.example.tablesection.sectioning.RViewSection
+import com.example.tablesection.sectioning.RViewSectionGroup
 import com.example.tablesection.sticky.StickyHeaders
 
-class MyAdapter(private  val sectionGroup : SectionGroupWithSticky<*>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
-        RViewSectionListener,
-    StickyHeaders by sectionGroup,
-    StickyHeaders.ViewSetup by sectionGroup{
+class SectioningStickyAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
+        RViewSectionListener, StickyHeaders{
 
 
-
-    init {
-        sectionGroup.listener = this
-    }
-
-
+    lateinit var sectionGroup: RViewSectionGroup<*>
 
 
 
@@ -69,9 +63,14 @@ class MyAdapter(private  val sectionGroup : SectionGroupWithSticky<*>) : Recycle
         return 0
     }
 
+    override fun isStickyHeader(position: Int): Boolean {
 
-
-
+        val group = sectionGroup
+        if(group is SectionGroupWithSticky){
+            return group.isStickyHeader(position)
+        }
+        return false
+    }
 
 
 }
