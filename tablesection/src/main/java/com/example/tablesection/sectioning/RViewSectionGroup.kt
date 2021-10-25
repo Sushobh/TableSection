@@ -7,11 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 import java.lang.Exception
 import java.util.*
+import kotlin.collections.ArrayList
 
-abstract class  RViewSectionGroup<X : RViewSection> (val sections : ArrayList<X>,sectionViewListener : RViewSectionListener) :
+abstract class  RViewSectionGroup<X : RViewSection> (sectionViewListener : RViewSectionListener) :
         RViewSection(sectionViewListener), RViewSectionListener {
 
 
+    protected val sections : ArrayList<X> = arrayListOf()
 
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -113,7 +115,7 @@ abstract class  RViewSectionGroup<X : RViewSection> (val sections : ArrayList<X>
         getListener().itemRangeChanged(startIndex+position,count,this)
     }
 
-    fun addSection(section : X,position: Int){
+    open fun addSection(section : X,position: Int){
         val lastValidIndex = sections.size
         if(position <= lastValidIndex){
             sections.add(position,section)

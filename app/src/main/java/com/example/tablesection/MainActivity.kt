@@ -48,25 +48,22 @@ class MainActivity : AppCompatActivity() {
         tab2.addSection(sec2tab2)
 
 
-        val mainGroup = MySectionGroupWithSticky(adapter)
+        val mainGroup = SingleSectionGroup(adapter)
         mainGroup.enableEventsToAdapter(true)
 
         findViewById<Button>(R.id.togg).setOnClickListener {
             if(currentTab == 1){
-                mainGroup.removeSection(tab1)
-                mainGroup.addSection(tab2)
+                mainGroup.displaySection(tab2)
                 currentTab = 2
             }
             else {
-
-                mainGroup.removeSection(tab2)
-                mainGroup.addSection(tab1)
+                mainGroup.displaySection(tab1)
                 currentTab = 1
             }
         }
         adapter.sectionGroup = mainGroup
         listView.adapter = adapter
-        mainGroup.addSection(tab1)
+        mainGroup.displaySection(tab1)
     }
 
 
