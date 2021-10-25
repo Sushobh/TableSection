@@ -142,9 +142,7 @@ abstract class  RViewSectionGroup<X : RViewSection> (val sections : ArrayList<X>
 
     fun removeSection(index : Int){
         val section = sections[index]
-        val startIndexForSection = getSectionStartIndex(section)
-        sections.remove(section)
-        getListener().itemRangeRemoved(startIndexForSection,section.getLength(),this)
+        removeSection(section)
     }
 
     override fun getAdapterStartPosition(section: RViewSection) : Int {
