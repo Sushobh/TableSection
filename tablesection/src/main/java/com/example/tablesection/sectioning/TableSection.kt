@@ -13,7 +13,7 @@ import java.lang.Exception
 
 abstract class TableSection(val viewTypes : ArrayList<Int>,
                             val stickyHeadersLinearLayoutManager: StickyHeadersLinearLayoutManager<SectioningStickyAdapter>,
-                            val tag : ViewInfoTag, listView : RecyclerView, val rowHeight : Int, val headerRowHeight : Int,
+                            val tag : ViewInfoTag,val listView : RecyclerView, val rowHeight : Int, val headerRowHeight : Int,
                             listener: RViewSectionListener) : RViewSection(listener){
 
     public interface HasScrollableView <X> where X : StickyHeadersLinearLayoutManager.Scrollable, X : RowView {
@@ -243,6 +243,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                 }
             }
         }
+        listView.invalidateItemDecorations()
     }
 
     override fun getLength(): Int {

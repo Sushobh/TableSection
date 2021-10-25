@@ -807,5 +807,17 @@ public class StickyHeadersLinearLayoutManager<T extends RecyclerView.Adapter & S
         void addHorizontalScrollListener(View.OnScrollChangeListener listener);
     }
 
+    public boolean isStickyVisible() {
+        return mStickyHeaderAttachCount > 0;
+    }
+
+    public int  getStickyHeight(){
+
+        if(mStickyHeader != null){
+            return mStickyHeader.getHeight();
+        }
+        return 0;
+    }
+
 
 }

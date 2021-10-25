@@ -10,6 +10,7 @@
 
 
     <Button
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/togg"
         app:layout_constraintEnd_toEndOf="parent"

@@ -8,6 +8,7 @@ import com.example.tablesection.data.getDummyData
 import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
 import com.example.tablesection.customviews.ViewInfoTag
 import com.example.tablesection.data.DummyData
+import com.example.tablesection.sticky.ShadowDecoration
 import kotlin.coroutines.suspendCoroutine
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val listView = findViewById<RecyclerView>(R.id.list_view)
+        listView.addItemDecoration(ShadowDecoration())
         val layoutManager = StickyHeadersLinearLayoutManager<SectioningStickyAdapter>(this)
         listView.layoutManager = layoutManager
         val headerRowHeight = 150
