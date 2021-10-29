@@ -16,4 +16,6 @@
     <dimen name="hd_30dp">30dp</dimen>
     <dimen name="big_grey_level_4_divider_height">4dp</dimen>
     <dimen name="yellow_left_divider_width">4dp</dimen>
+    <dimen name="sticky_cell_margin_right">12dp</dimen>
+    <dimen name="sticky_cell_margin_left">12dp</dimen>
 </resources>

@@ -24,6 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
+        android:paddingEnd="@dimen/sticky_cell_margin_right"
+        android:paddingStart="@dimen/sticky_cell_margin_left"
         android:layout_marginStart="@dimen/hd_8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"

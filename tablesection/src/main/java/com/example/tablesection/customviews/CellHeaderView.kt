@@ -19,6 +19,7 @@ class CellHeaderView : LinearLayout {
         attrs,
         defStyleAttr
     )
+    lateinit var textView: TextView
 
     constructor(
         context: Context?,
@@ -32,6 +33,7 @@ class CellHeaderView : LinearLayout {
         View.inflate(context, R.layout.cell_header,this)
         gravity = Gravity.END
         layoutParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
+        textView = findViewById(R.id.text_view)
     }
 
     fun setContentGravity(newGravity : Int){
@@ -42,15 +44,15 @@ class CellHeaderView : LinearLayout {
     fun bindData(cellHeader: CellHeader){
         when(cellHeader.cellStatus){
             CellHeader.CellHeaderStatus.ASC -> {
-                findViewById<TextView>(R.id.text_view).setText(cellHeader.text)
+                textView.setText(cellHeader.text)
                 findViewById<ImageView>(R.id.sort_indicator).setImageResource(R.drawable.ic_sort_ascending)
             }
             CellHeader.CellHeaderStatus.DESC -> {
-                findViewById<TextView>(R.id.text_view).setText(cellHeader.text)
+                textView.setText(cellHeader.text)
                 findViewById<ImageView>(R.id.sort_indicator).setImageResource(R.drawable.ic_sort_descending)
             }
             CellHeader.CellHeaderStatus.DEFAULT -> {
-                findViewById<TextView>(R.id.text_view).setText(cellHeader.text)
+                textView.setText(cellHeader.text)
                 findViewById<ImageView>(R.id.sort_indicator).setImageResource(R.drawable.ic_sort)
             }
         }

@@ -104,4 +104,8 @@ open class RowView(
     }
 
 
+    fun shouldShowShadow() : Boolean {
+        return scrollView.canScrollHorizontally(1)
+    }
+
 }
