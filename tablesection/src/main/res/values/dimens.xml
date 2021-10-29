@@ -6,16 +6,21 @@
     <dimen name="hd_16sp">16sp</dimen>
     <dimen name="hd_4dp">4dp</dimen>
     <dimen name="hd_16dp">16dp</dimen>
-    <dimen name="cell_header_padding_top">8dp</dimen>
     <dimen name="hd_12dp">12dp</dimen>
-    <dimen name="right_elevation">15dp</dimen>
-    <dimen name="sticky_column_width">150dp</dimen>
     <dimen name="column_height">50dp</dimen>
     <dimen name="hd_2dp">2dp</dimen>
     <dimen name="hd_1dp">1dp</dimen>
     <dimen name="hd_30dp">30dp</dimen>
-    <dimen name="big_grey_level_4_divider_height">4dp</dimen>
-    <dimen name="yellow_left_divider_width">4dp</dimen>
-    <dimen name="sticky_cell_margin_right">12dp</dimen>
-    <dimen name="sticky_cell_margin_left">12dp</dimen>
+
+
+    <dimen name="hld_right_elevation">15dp</dimen>
+    <dimen name="hld_sticky_column_width">150dp</dimen>
+    <dimen name="hld_cell_header_padding_top">8dp</dimen>
+    <dimen name="hld_big_grey_level_4_divider_height">4dp</dimen>
+    <dimen name="hld_yellow_left_divider_width">4dp</dimen>
+    <dimen name="hld_level4_item_text_margin_left">10dp</dimen>
+    <dimen name="hld_sticky_cell_padding_right">12dp</dimen>
+    <dimen name="hld_level_1_and_2_text_margin_start">@dimen/hld_sticky_cell_padding_right</dimen>
+    <dimen name="hld_level4_indicator_margin_start">@dimen/hld_level_1_and_2_text_margin_start</dimen>
+
 </resources>

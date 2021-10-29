@@ -7,12 +7,12 @@
 
     <LinearLayout
         android:background="@color/white"
-        android:elevation="@dimen/right_elevation"
+        android:elevation="@dimen/hld_right_elevation"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/sticky_column_cell"
-        android:layout_width="@dimen/sticky_column_width"
+        android:layout_width="@dimen/hld_sticky_column_width"
         android:layout_height="match_parent"/>
     <com.example.tablesection.customviews.NoFlingScrollView
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,7 +31,7 @@
     </com.example.tablesection.customviews.NoFlingScrollView>
 
     <View
-        android:layout_marginStart="@dimen/yellow_left_divider_width"
+        android:layout_marginStart="@dimen/hld_yellow_left_divider_width"
         android:translationZ="@dimen/hd_30dp"
         android:id="@+id/bottom_divider_scroll_view"
         android:background="@color/black"
@@ -48,6 +48,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/big_grey_level_4_divider_height"/>
+        android:layout_height="@dimen/hld_big_grey_level_4_divider_height"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
