@@ -26,7 +26,7 @@ fun getDummyData() : DummyData {
     val list = arrayListOf<DummyRowData>()
     val dummy = getLevel2Dummy(8)
     for(i in 1..level2Count){
-        list.add(getLevel2Dummy(8))
+        list.add(getLevel2Dummy(20))
         for(j in 1..level2Count){
             list.add(getLevel3Dummy(8))
             for(k in 1..level2Count){

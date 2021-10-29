@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.example.tablesection.R
 
 class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : Array<Int>,val sortClickListener: SortClickListener,requiredHeight : Int) :
@@ -68,6 +69,12 @@ class TableHeaderRowView(context: Context,columnCount : Int,var columnWidths : A
     }
 
 
+    fun applyStyleOnText(  style : ( textView : TextView) -> Unit) {
+        style.invoke(stickyColumnCell.textView)
+        cells.forEach {
+            style.invoke(it.textView)
+        }
+    }
 
 
 }
