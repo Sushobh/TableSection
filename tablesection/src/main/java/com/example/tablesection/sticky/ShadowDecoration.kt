@@ -37,7 +37,12 @@ class ShadowDecoration : RecyclerView.ItemDecoration() {
                            layoutManager: StickyHeadersLinearLayoutManager<*>) {
         bounds.forEach {
             if(layoutManager.isStickyVisible() && it.top < layoutManager.getStickyHeight() ){
-                drawable?.setBounds(parent.width-shadowWidth,it.top+layoutManager.getStickyHeight(),parent.width,it.bottom)
+
+                it.top = layoutManager.getStickyBottom()
+                drawable?.setBounds(parent.width-shadowWidth,
+                        it.top,
+                        parent.width,
+                        it.bottom)
             }
             else {
                 drawable?.setBounds(parent.width-shadowWidth,it.top,parent.width,it.bottom)
@@ -94,13 +99,9 @@ class ShadowDecoration : RecyclerView.ItemDecoration() {
                     }
 
                 }
-                if(i == childCount -1){
-
-                }
-                else {
+                if(!(i == childCount -1)){
                     continue
                 }
-
             }
             i++
         }
@@ -108,7 +109,7 @@ class ShadowDecoration : RecyclerView.ItemDecoration() {
     }
 
 
-    class ShadowBound(val top : Int, val bottom : Int)
+    class ShadowBound(var top : Int, var bottom : Int)
 
 
 }

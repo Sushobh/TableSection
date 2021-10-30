@@ -819,5 +819,11 @@ public class StickyHeadersLinearLayoutManager<T extends RecyclerView.Adapter & S
         return 0;
     }
 
+    public int getStickyBottom(){
+        if(mStickyHeader != null){
+            return mStickyHeader.getBottom();
+        }
+        return 0;
+    }
 
 }
