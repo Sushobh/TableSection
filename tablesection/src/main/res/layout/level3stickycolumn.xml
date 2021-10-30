@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="@dimen/sticky_column_width"
+    android:paddingRight="@dimen/hld_sticky_cell_padding_right"
+    android:layout_width="@dimen/hld_sticky_column_width"
     android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
@@ -8,19 +9,19 @@
     xmlns:tools="http://schemas.android.com/tools">
     <include
         android:id="@+id/divider_horizontal"
-        android:layout_width="@dimen/yellow_left_divider_width"
+        android:layout_width="@dimen/hld_yellow_left_divider_width"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         layout="@layout/yellow_divider"/>
     <TextView
-        android:paddingStart="@dimen/hd_12dp"
+        android:layout_marginStart="@dimen/hld_level_1_and_2_text_margin_start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/sticky_col_text_view"
         android:textSize="@dimen/hd_12sp"
-        tools:text="Sticky Column"
+        tools:text="Sticky Columnasdasdasdasdasdasdasdasdasdasdas"
         app:layout_constraintStart_toEndOf="@+id/divider_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

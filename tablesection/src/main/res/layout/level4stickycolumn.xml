@@ -1,36 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:paddingRight="@dimen/hld_sticky_cell_padding_right"
     android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/sticky_column_width"
+    android:layout_width="@dimen/hld_sticky_column_width"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <include
         android:id="@+id/divider_horizontal"
-        android:layout_width="@dimen/yellow_left_divider_width"
+        android:layout_width="@dimen/hld_yellow_left_divider_width"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         layout="@layout/yellow_divider"/>
     <ImageView
-        android:paddingStart="@dimen/hd_12dp"
         android:id="@+id/ic_indicator"
+        android:layout_marginLeft="@dimen/hld_level4_indicator_margin_start"
         app:layout_constraintBottom_toBottomOf="@+id/sticky_col_text_view"
         app:layout_constraintTop_toTopOf="@+id/sticky_col_text_view"
         app:layout_constraintStart_toEndOf="@+id/divider_horizontal"
+        app:layout_constraintRight_toLeftOf="@+id/sticky_col_text_view"
         android:src="@drawable/ic_level4_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
-        android:layout_marginStart="@dimen/hd_8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/hld_level4_item_text_margin_left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/sticky_col_text_view"
         android:textSize="@dimen/hd_12sp"
-        tools:text="Sticky Column"
+        tools:text="Sticky Columnsadasdasdasdsa"
         app:layout_constraintStart_toEndOf="@+id/ic_indicator"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

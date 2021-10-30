@@ -31,26 +31,26 @@ class MainActivity : AppCompatActivity() {
         val adapter = SectioningStickyAdapter()
 
 
-        val tab1 = MySectionGroupWithSticky(adapter)
+        val tab1 = TableSectionGroupWithSticky(adapter)
         val sec1tab1 = ExampleTableSection(arrayListOf(1,2,3,4), tab1,getDummyData(),this,layoutManager,
             ViewInfoTag("1"),listView,rowHeight,headerRowHeight)
         val sec2tab1 = ExampleTableSection(arrayListOf(5,6,7,8), tab1,getDummyData(),this,layoutManager,
-                ViewInfoTag("1"),listView,rowHeight,headerRowHeight)
+                ViewInfoTag("2"),listView,rowHeight,headerRowHeight)
         tab1.addSection(sec1tab1)
         tab1.addSection(sec2tab1)
 
 
-        val tab2 = MySectionGroupWithSticky(adapter)
+        val tab2 = TableSectionGroupWithSticky(adapter)
         val sec1tab2 = ExampleTableSection(arrayListOf(9,10,11,12), tab2,getDummyData(),this,layoutManager,
-                ViewInfoTag("1"),listView,rowHeight,headerRowHeight)
+                ViewInfoTag("3"),listView,rowHeight,headerRowHeight)
         val sec2tab2 = ExampleTableSection(arrayListOf(13,14,15,116), tab2,getDummyData(),this,layoutManager,
-                ViewInfoTag("1"),listView,rowHeight,headerRowHeight)
+                ViewInfoTag("4"),listView,rowHeight,headerRowHeight)
 
         tab2.addSection(sec1tab2)
         tab2.addSection(sec2tab2)
 
 
-        val mainGroup = SingleSectionGroup(adapter)
+        val mainGroup = SingleSectionGroupWithSticky(adapter)
         mainGroup.enableEventsToAdapter(true)
 
         findViewById<Button>(R.id.togg).setOnClickListener {

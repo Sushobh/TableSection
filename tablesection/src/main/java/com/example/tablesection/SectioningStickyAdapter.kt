@@ -66,7 +66,7 @@ class SectioningStickyAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>(
     override fun isStickyHeader(position: Int): Boolean {
 
         val group = sectionGroup
-        if(group is SectionGroupWithSticky){
+        if(group is StickyHeaders){
             return group.isStickyHeader(position)
         }
         return false
