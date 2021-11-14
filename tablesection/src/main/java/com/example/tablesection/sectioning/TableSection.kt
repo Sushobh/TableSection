@@ -2,6 +2,7 @@ package com.example.tablesection.sectioning
 
 import android.annotation.SuppressLint
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -48,6 +49,13 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                             oldScrollX: Int,
                             oldScrollY: Int
                         ) {
+                            if(scrollX == 0){
+                                v?.let {
+                                    val childView = stickyHeadersLinearLayoutManager.findContainingItemView(v)
+                                    val position = stickyHeadersLinearLayoutManager.getPosition(childView!!)
+                                }
+
+                            }
                             currentScroll = scrollX
                             syncScroll()
                         }
@@ -118,7 +126,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             override fun sortClicked(headerPos: Int, isSticky: Boolean) {
                 if(isSticky){
                     if(headerCols.stickyCell.cellStatus == CellHeader.CellHeaderStatus.DEFAULT){
-                        headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.ASC
+                        headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.DESC
                     }
                     else if(headerCols.stickyCell.cellStatus == CellHeader.CellHeaderStatus.ASC){
                         headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.DESC
@@ -134,7 +142,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                     headerCols.stickyCell.cellStatus = CellHeader.CellHeaderStatus.DEFAULT
 
                     if(headerCols.cellHeaderList[headerPos].cellStatus == CellHeader.CellHeaderStatus.DEFAULT){
-                        headerCols.cellHeaderList[headerPos].cellStatus = CellHeader.CellHeaderStatus.ASC
+                        headerCols.cellHeaderList[headerPos].cellStatus = CellHeader.CellHeaderStatus.DESC
                     }
                     else if(headerCols.cellHeaderList[headerPos].cellStatus == CellHeader.CellHeaderStatus.ASC){
                         headerCols.cellHeaderList[headerPos].cellStatus = CellHeader.CellHeaderStatus.DESC
