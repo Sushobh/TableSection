@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tablesection.R
 import com.example.tablesection.SectioningStickyAdapter
 import com.example.tablesection.customviews.*
 import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
@@ -93,11 +94,11 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         if(viewHolder is Level1ViewHolder){
             if(isExpanded){
                 viewHolder.view.tableHeaderView.visibility = View.VISIBLE
-                viewHolder.view.expandIndicator.scaleY = 1.0f
+                viewHolder.view.expandIndicator.setImageResource(R.drawable.ic_arrow_down_2x)
             }
             else {
                 viewHolder.view.tableHeaderView.visibility = View.GONE
-                viewHolder.view.expandIndicator.scaleY = -1.0f
+                viewHolder.view.expandIndicator.setImageResource(R.drawable.ic_arrow_up_2x)
             }
             viewHolder.view.tableHeaderView.bindData(headerCols)
         }
