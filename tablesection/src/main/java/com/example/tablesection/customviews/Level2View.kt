@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.tablesection.R
-import com.example.tablesection.customviews.RowView
 
 
 class Level2View(context: Context, columnCount : Int,requirdHeight : Int) : RowView(context,columnCount,requirdHeight) {
@@ -22,7 +21,7 @@ class Level2View(context: Context, columnCount : Int,requirdHeight : Int) : RowV
         stickyColumnView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT)
         this.stickyColumnView = stickyColumnView
         addStickyColumn(stickyColumnView)
-        setBackgroundColor(context.getColor(R.color.level2yellow))
+        setBackgroundColor(context.getColor(R.color.level2_background_light))
         bottomDivider.visibility = View.GONE
     }
 

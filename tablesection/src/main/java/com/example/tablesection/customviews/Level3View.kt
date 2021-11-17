@@ -22,7 +22,7 @@ class Level3View(context: Context, columnCount : Int,requiredHeight : Int) : Row
             LinearLayout.LayoutParams.MATCH_PARENT)
         this.stickyColumnView = stickyColumnView
         addStickyColumn(stickyColumnView)
-        bottomDivider.setBackgroundColor(context.getColor(R.color.level1_background_light))
+        bottomDivider.setBackgroundColor(context.getColor(R.color.level2_background_light))
     }
 
 

@@ -16,6 +16,8 @@
         app:layout_constraintTop_toTopOf="parent"
         layout="@layout/yellow_divider"/>
     <TextView
+        android:ellipsize="end"
+        android:maxLines="2"
         android:layout_marginStart="@dimen/hld_level_1_and_2_text_margin_start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"

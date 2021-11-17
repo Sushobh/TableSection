@@ -3,7 +3,7 @@
     android:paddingRight="@dimen/hld_sticky_cell_padding_right"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/level1_background_light"
+    android:background="@color/level2_background_light"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -16,6 +16,8 @@
         app:layout_constraintTop_toTopOf="parent"
         layout="@layout/yellow_divider"/>
     <TextView
+        android:ellipsize="end"
+        android:maxLines="2"
         android:layout_marginStart="@dimen/hld_level_1_and_2_text_margin_start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"

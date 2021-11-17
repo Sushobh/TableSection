@@ -10,11 +10,5 @@
 
 
 
-    <color name="cell_header_blue">#007099</color>
-    <color name="level1_background_light">#F1E4BA</color>
-    <color name="level1_1textcolor">#1C1C1C</color>
-    <color name="level1_2textcolor">#646464</color>
-    <color name="divider_yellow">#DBAA35</color>
-    <color name="level2yellow">#F1E4BA</color>
-    <color name="sort_icon_color">#007099</color>
+
 </resources>

@@ -38,7 +38,7 @@ fun getDummyData() : DummyData {
 }
 
 fun getLevel2Dummy(stringLength : Int) : Level2Data {
-    return Level2Data(getRandomString(stringLength),
+    return Level2Data(getRandomString(400),
         getRandomString(stringLength),
         getRandomString(stringLength),
         getRandomString(stringLength),

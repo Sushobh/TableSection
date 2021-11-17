@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         listView.itemAnimator = null
         val layoutManager = StickyHeadersLinearLayoutManager<SectioningStickyAdapter>(this)
         listView.layoutManager = layoutManager
-        val headerRowHeight = 150
+        val headerRowHeight = 100
         val rowHeight = 220
 
         val adapter = SectioningStickyAdapter()
