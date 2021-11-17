@@ -76,7 +76,7 @@ StickyHeadersLinearLayoutManager<SectioningStickyAdapter>, viewInfoTag: ViewInfo
         for(i in 0..getColumnCount()-1){
             cols.add(CellHeader("Column ${i}", CellHeader.CellHeaderStatus.DEFAULT))
         }
-        return TableHeaderRowView.TableHeaderData(CellHeader(stickyColumnHeaderName, CellHeader.CellHeaderStatus.DEFAULT),cols)
+        return TableHeaderRowView.TableHeaderData(CellHeader(stickyColumnHeaderName, CellHeader.CellHeaderStatus.ASC),cols)
     }
 
 
