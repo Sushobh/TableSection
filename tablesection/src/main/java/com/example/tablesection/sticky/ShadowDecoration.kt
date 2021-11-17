@@ -11,7 +11,7 @@ class ShadowDecoration : RecyclerView.ItemDecoration() {
 
 
     protected var drawable : Drawable? = null
-    protected var shadowWidth = 20
+    protected var shadowWidth = 60
 
 
     override fun onDrawOver(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {
@@ -19,7 +19,7 @@ class ShadowDecoration : RecyclerView.ItemDecoration() {
 
 
         if (drawable == null) {
-            drawable = parent.context.getDrawable(R.drawable.shadow_drawable)
+            drawable = parent.context.getDrawable(R.drawable.myshadow5)
         }
 
 
