@@ -11,6 +11,7 @@ import com.example.tablesection.customviews.*
 import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
 import com.example.tablesection.customviews.ViewInfoTag
 import java.lang.Exception
+import kotlin.math.exp
 
 abstract class TableSection(val viewTypes : ArrayList<Int>,
                             val stickyHeadersLinearLayoutManager: StickyHeadersLinearLayoutManager<SectioningStickyAdapter>,
@@ -182,16 +183,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             level1View.translationZ = 100f
             level1View.tag = tag
             level1View.expandIndicator.setOnClickListener {
-                if(isExpanded){
-                    isExpanded = false
-                    getListener().itemRangeRemoved(1,getDataLength(),this)
-                    getListener().itemChanged(0,this)
-                }
-                else {
-                    isExpanded = true
-                    getListener().itemRangeAdded(1,getDataLength(),this)
-                    getListener().itemChanged(0,this)
-                }
+                 expand(!isExpanded)
             }
             return Level1ViewHolder(level1View)
         }
@@ -238,6 +230,22 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
 
 
         throw Exception("invalid view type")
+    }
+
+    fun expand(flag : Boolean){
+        if(flag == isExpanded){
+            return
+        }
+        if(isExpanded){
+            isExpanded = false
+            getListener().itemRangeRemoved(1,getDataLength(),this)
+            getListener().itemChanged(0,this)
+        }
+        else {
+            isExpanded = true
+            getListener().itemRangeAdded(1,getDataLength(),this)
+            getListener().itemChanged(0,this)
+        }
     }
 
     fun syncScroll(){
