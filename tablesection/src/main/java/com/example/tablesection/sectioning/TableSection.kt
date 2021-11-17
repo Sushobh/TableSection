@@ -1,6 +1,7 @@
 package com.example.tablesection.sectioning
 
 import android.annotation.SuppressLint
+import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
@@ -260,7 +261,9 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                 }
             }
         }
-        listView.invalidateItemDecorations()
+        Handler(Looper.getMainLooper()).post {
+            listView.invalidateItemDecorations()
+        }
     }
 
     override fun getLength(): Int {
