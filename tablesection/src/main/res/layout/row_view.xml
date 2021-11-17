@@ -31,8 +31,9 @@
     </com.example.tablesection.customviews.NoFlingScrollView>
 
     <View
+        android:outlineProvider="none"
+        android:translationZ="20dp"
         android:layout_marginStart="@dimen/hld_yellow_left_divider_width"
-        android:translationZ="@dimen/hd_30dp"
         android:id="@+id/bottom_divider_scroll_view"
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
