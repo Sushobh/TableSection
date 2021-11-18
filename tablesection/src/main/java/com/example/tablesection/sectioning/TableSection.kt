@@ -187,6 +187,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             level1View.expandIndicator.setOnClickListener {
                  expand(!isExpanded)
             }
+            styleLevel1View(level1View)
             return Level1ViewHolder(level1View)
         }
         else if(viewType.equals(viewTypes.get(1))){
@@ -200,6 +201,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                level2View.addHorizontalScrollListener(scrollChangeListener)
                level2View.addFlingListener(flingListener)
                level2View.tag = tag
+               styleLevel2View(level2View)
                return getLevel2ViewHolder(level2View)
         }
         else if(viewType.equals(viewTypes.get(2))){
@@ -213,6 +215,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             level3View.addHorizontalScrollListener(scrollChangeListener)
             level3View.addFlingListener(flingListener)
             level3View.tag = tag
+            styleLevel3View(level3View)
             return getLevel3ViewHolder(level3View)
         }
 
@@ -227,6 +230,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
             level4View.addHorizontalScrollListener(scrollChangeListener)
             level4View.addFlingListener(flingListener)
             level4View.tag = tag
+            styleLevel4View(level4View)
             return getLevel4ViewHolder(level4View)
         }
 
@@ -283,6 +287,21 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         return widthArray
     }
 
+    fun styleLevel1View(level1View: Level1View){
+
+    }
+
+    fun styleLevel2View(level2View: Level2View){
+
+    }
+
+    fun styleLevel3View(level3View: Level3View){
+
+    }
+
+    fun styleLevel4View(level4View: Level4View){
+
+    }
 
 
     fun afterStickyIsLaidOut(stickyView: Level1View) {

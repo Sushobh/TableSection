@@ -15,6 +15,10 @@ class Level2View(context: Context, columnCount : Int,requirdHeight : Int) : RowV
         stickyColumnView.findViewById<TextView>(R.id.sticky_col_text_view).setText(text)
     }
 
+    init {
+
+    }
+
 
     init {
         val stickyColumnView = View.inflate(context, R.layout.level2stickycolumn,null)
