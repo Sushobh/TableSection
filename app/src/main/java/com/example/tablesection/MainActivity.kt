@@ -47,15 +47,11 @@ class MainActivity : AppCompatActivity() {
         }
         adapter.sectionGroup = mainGroup
         listView.adapter = adapter
-        (0..1).forEach {
-            Handler(Looper.getMainLooper()).postDelayed({
-                val tab1 = TableSectionGroupWithSticky(adapter)
-                val sec1tab1 = ExampleTableSection(arrayListOf(1,2,3,4), tab1,getDummyData(),this,layoutManager,
-                        ViewInfoTag("1"),listView,rowHeight,headerRowHeight)
-                tab1.addSection(sec1tab1)
-                mainGroup.displaySection(tab1)
-            }, (100*it).toLong())
-        }
+        val tab1 = TableSectionGroupWithSticky(adapter)
+        val sec1tab1 = ExampleTableSection(arrayListOf(1,2,3,4), tab1,getDummyData(),this,layoutManager,
+                ViewInfoTag("1"),listView,rowHeight,headerRowHeight)
+        tab1.addSection(sec1tab1)
+        mainGroup.displaySection(tab1)
     }
 
 
