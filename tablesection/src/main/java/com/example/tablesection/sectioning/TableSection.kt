@@ -52,13 +52,6 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                             oldScrollX: Int,
                             oldScrollY: Int
                         ) {
-                            if(scrollX == 0){
-                                v?.let {
-                                    val childView = stickyHeadersLinearLayoutManager.findContainingItemView(v)
-                                    val position = stickyHeadersLinearLayoutManager.getPosition(childView!!)
-                                }
-
-                            }
                             currentScroll = scrollX
                             syncScroll()
                         }
