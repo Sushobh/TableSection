@@ -148,7 +148,7 @@ abstract class  RViewSectionGroup<X : RViewSection> (sectionViewListener : RView
     }
 
     override fun getAdapterStartPosition(section: RViewSection) : Int {
-        return getListener().getAdapterStartPosition(this) ?: 0 + getSectionStartIndex(section)
+        return getListener().getAdapterStartPosition(this) + getSectionStartIndex(section)
     }
 
     override fun enableEventsToAdapter(flag: Boolean) {

@@ -54,8 +54,13 @@ open class RowView(
     }
 
 
-    fun showInfoIconImage() {
-        infoIconImage?.visibility = View.VISIBLE
+    fun showInfoIconImage(flag : Boolean) {
+       if(flag){
+           infoIconImage?.visibility = View.VISIBLE
+       }
+        else {
+           infoIconImage?.visibility = View.GONE
+       }
     }
 
     fun setInfoClickListener(listener : () -> Unit) {
