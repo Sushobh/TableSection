@@ -7,6 +7,7 @@ import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.updateLayoutParams
@@ -24,7 +25,8 @@ open class RowView(
     private    var cellHoldersList = arrayListOf<LinearLayout>()
     protected var bottomDivider : View
     protected var bottomDividerBiggerGrey : View
-    var infoIconSpace : LinearLayout? = null
+    protected var infoIconImage : ImageView? = null
+    protected var infoIconSpace : View? = null
 
 
 
@@ -35,13 +37,16 @@ open class RowView(
 
 
     init {
-        inflate(context, R.layout.row_view, this)
+        inflate(context, R.layout.hld_row_view, this)
         stickyColumnHolder = findViewById(R.id.sticky_column_cell)
         scrollView = findViewById(R.id.scroll_row)
         columnsHolder = findViewById(R.id.columns_holder)
         bottomDivider = findViewById(R.id.bottom_divider_scroll_view)
         bottomDividerBiggerGrey = findViewById(R.id.bottom_divider_bigger_grey)
         addColumnSpace()
+        infoIconSpace = View.inflate(context,R.layout.hld_info_icon_layout,columnsHolder)
+        infoIconImage = findViewById(R.id.hld_info_icon)
+        infoIconImage?.visibility = View.GONE
     }
 
     fun setNewHeight(height : Int){
@@ -49,6 +54,15 @@ open class RowView(
     }
 
 
+    fun showInfoIconImage() {
+        infoIconImage?.visibility = View.VISIBLE
+    }
+
+    fun setInfoClickListener(listener : () -> Unit) {
+        infoIconImage?.setOnClickListener {
+            listener.invoke()
+        }
+    }
 
     private fun addColumnSpace(){
         for(i in 0..columnCount-1){
@@ -72,14 +86,8 @@ open class RowView(
         cellHoldersList[index].addView(view)
     }
 
-    fun addInfoIconSpace(width : Int){
-        val params = LayoutParams(width, LinearLayout.LayoutParams.MATCH_PARENT)
-        val layout = LinearLayout(context)
-        layout.layoutParams = params
-        layout.orientation = LinearLayout.VERTICAL
-        layout.gravity = Gravity.CENTER
-        columnsHolder.addView(layout)
-        infoIconSpace = layout
+    fun addInfoIconSpace(){
+
     }
 
     fun getColumnHolder(pos : Int) : ViewGroup{

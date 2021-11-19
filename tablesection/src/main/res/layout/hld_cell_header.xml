@@ -7,11 +7,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:textSize="@dimen/hd_12sp"
+        android:textSize="@dimen/hld_12sp"
         android:gravity="end"
         android:textAlignment="textEnd"
         android:id="@+id/text_view"
-        android:textColor="@color/cell_header_blue"
+        android:textColor="@color/hld_cell_header_blue"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Symbol"
         android:layout_width="match_parent"
@@ -19,12 +19,12 @@
 
     <ImageView
         android:id="@+id/sort_indicator"
-        android:layout_marginStart="@dimen/hd_2dp"
-        android:src="@drawable/ic_sort"
+        android:layout_marginStart="@dimen/hld_2dp"
+        android:src="@drawable/hld_ic_sort"
         app:layout_constraintBottom_toBottomOf="@id/text_view"
         app:layout_constraintTop_toTopOf="@+id/text_view"
         app:layout_constraintStart_toEndOf="@+id/text_view"
-        android:layout_width="@dimen/hd_12dp"
-        android:layout_height="@dimen/hd_12dp"/>
+        android:layout_width="@dimen/hld_12dp"
+        android:layout_height="@dimen/hld_12dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="hd_8dp">8dp</dimen>
-    <dimen name="hd_14sp">14sp</dimen>
-    <dimen name="hd_12sp">12sp</dimen>
-    <dimen name="hd_16sp">16sp</dimen>
-    <dimen name="hd_4dp">4dp</dimen>
-    <dimen name="hd_16dp">16dp</dimen>
+    <dimen name="hld_8dp">8dp</dimen>
+    <dimen name="hld_14sp">14sp</dimen>
+    <dimen name="hld_12sp">12sp</dimen>
+    <dimen name="hld_16sp">16sp</dimen>
+    <dimen name="hld_4dp">4dp</dimen>
+    <dimen name="hld_16dp">16dp</dimen>
     <dimen name="hld_cell_header_padding_top">8dp</dimen>
-    <dimen name="hd_12dp">12dp</dimen>
+    <dimen name="hld_12dp">12dp</dimen>
     <dimen name="column_height">50dp</dimen>
-    <dimen name="hd_2dp">2dp</dimen>
+    <dimen name="hld_2dp">2dp</dimen>
 </resources>

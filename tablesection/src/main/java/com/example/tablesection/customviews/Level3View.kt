@@ -16,13 +16,13 @@ class Level3View(context: Context, columnCount : Int,requiredHeight : Int) : Row
 
 
     init {
-        val stickyColumnView = View.inflate(context, R.layout.level3stickycolumn,null)
+        val stickyColumnView = View.inflate(context, R.layout.hld_level3stickycolumn,null)
         stickyColumnView.layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT)
         this.stickyColumnView = stickyColumnView
         addStickyColumn(stickyColumnView)
-        bottomDivider.setBackgroundColor(context.getColor(R.color.level2_background_light))
+        bottomDivider.setBackgroundColor(context.getColor(R.color.hld_level2_background_light))
     }
 
 

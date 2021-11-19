@@ -39,13 +39,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/hd_1dp"/>
+        android:layout_height="@dimen/hld_1dp"/>
 
     <View
         android:visibility="gone"
-        android:translationZ="@dimen/hd_30dp"
+        android:translationZ="@dimen/hld_30dp"
         android:id="@+id/bottom_divider_bigger_grey"
-        android:background="@color/divider_grey"
+        android:background="@color/hld_divider_grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"

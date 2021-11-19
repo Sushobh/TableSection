@@ -6,15 +6,15 @@
     <include
         app:layout_constraintEnd_toStartOf="@+id/stick_cell_holder"
         android:id="@+id/divider_horizontal"
-        android:layout_width="@dimen/hd_4dp"
+        android:layout_width="@dimen/hld_4dp"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        layout="@layout/yellow_divider"/>
+        layout="@layout/hld_yellow_divider"/>
 
     <LinearLayout
-        android:paddingStart="@dimen/hd_12dp"
+        android:paddingStart="@dimen/hld_12dp"
         android:id="@+id/stick_cell_holder"
         android:layout_width="0dp"
         android:layout_height="match_parent"

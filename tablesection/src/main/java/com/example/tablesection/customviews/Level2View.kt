@@ -21,11 +21,11 @@ class Level2View(context: Context, columnCount : Int,requirdHeight : Int) : RowV
 
 
     init {
-        val stickyColumnView = View.inflate(context, R.layout.level2stickycolumn,null)
+        val stickyColumnView = View.inflate(context, R.layout.hld_level2stickycolumn,null)
         stickyColumnView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT)
         this.stickyColumnView = stickyColumnView
         addStickyColumn(stickyColumnView)
-        setBackgroundColor(context.getColor(R.color.level2_background_light))
+        setBackgroundColor(context.getColor(R.color.hld_level2_background_light))
         bottomDivider.visibility = View.GONE
     }
 

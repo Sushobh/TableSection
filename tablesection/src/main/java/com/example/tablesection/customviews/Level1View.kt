@@ -34,7 +34,7 @@ class Level1View : LinearLayout, StickyHeadersLinearLayoutManager.Scrollable {
     ) : super(context, attrs, defStyleAttr, defStyleRes)
 
     init {
-        inflate(context, R.layout.level1view,this)
+        inflate(context, R.layout.hld_level1view,this)
         header1 = findViewById(R.id.header1)
         header2 = findViewById(R.id.header2)
         header3 = findViewById(R.id.header3)

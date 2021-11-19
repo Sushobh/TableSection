@@ -14,16 +14,16 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        layout="@layout/yellow_divider"/>
+        layout="@layout/hld_yellow_divider"/>
     <TextView
-        android:textColor="@color/level1_1textcolor"
+        android:textColor="@color/hld_level1_1textcolor"
         android:ellipsize="end"
         android:maxLines="2"
         android:layout_marginStart="@dimen/hld_level_1_and_2_text_margin_start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/sticky_col_text_view"
-        android:textSize="@dimen/hd_12sp"
+        android:textSize="@dimen/hld_12sp"
         tools:text="Sticky Columnasdasdasdasdasdasdasdasdasdasdas"
         app:layout_constraintStart_toEndOf="@+id/divider_horizontal"
         android:layout_width="@dimen/hld_sticky_column_text_width"

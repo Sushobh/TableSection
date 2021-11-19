@@ -10,12 +10,12 @@
 
 
 
-    <color name="cell_header_blue">#007099</color>
-    <color name="level2_background_light">#80F1E4BA</color>
-    <color name="level1_1textcolor">#1C1C1C</color>
-    <color name="level1_2textcolor">#646464</color>
-    <color name="divider_yellow">#DBAA35</color>
-    <color name="level1yellow">#F1E4BA</color>
-    <color name="sort_icon_color">#007099</color>
-    <color name="divider_grey">#E6E6E6</color>
+    <color name="hld_cell_header_blue">#007099</color>
+    <color name="hld_level2_background_light">#80F1E4BA</color>
+    <color name="hld_level1_1textcolor">#1C1C1C</color>
+    <color name="hld_level1_2textcolor">#646464</color>
+    <color name="hld_divider_yellow">#DBAA35</color>
+    <color name="hld_level1yellow">#F1E4BA</color>
+    <color name="hld_sort_icon_color">#007099</color>
+    <color name="hld_divider_grey">#E6E6E6</color>
 </resources>

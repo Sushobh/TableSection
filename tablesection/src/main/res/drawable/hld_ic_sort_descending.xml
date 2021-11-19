@@ -19,7 +19,7 @@
   <path
       android:pathData="M8.5,2.3648L8.499,11.5518L10.1952,9.8852L11,10.6802L8,13.6352L5,10.6802L5.8047,9.8852L7.499,11.5508L7.5,2.3648L8.5,2.3648Z"
       android:strokeWidth="1"
-      android:fillColor="@color/sort_icon_color"
+      android:fillColor="@color/hld_sort_icon_color"
       android:fillType="evenOdd"
       android:strokeColor="#00000000"/>
 </vector>

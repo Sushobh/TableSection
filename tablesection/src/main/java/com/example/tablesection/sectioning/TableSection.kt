@@ -3,7 +3,6 @@ package com.example.tablesection.sectioning
 import android.annotation.SuppressLint
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +12,6 @@ import com.example.tablesection.customviews.*
 import com.example.tablesection.sticky.StickyHeadersLinearLayoutManager
 import com.example.tablesection.customviews.ViewInfoTag
 import java.lang.Exception
-import kotlin.math.exp
 
 abstract class TableSection(val viewTypes : ArrayList<Int>,
                             val stickyHeadersLinearLayoutManager: StickyHeadersLinearLayoutManager<SectioningStickyAdapter>,
@@ -88,11 +86,11 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         if(viewHolder is Level1ViewHolder){
             if(isExpanded){
                 viewHolder.view.tableHeaderView.visibility = View.VISIBLE
-                viewHolder.view.expandIndicator.setImageResource(R.drawable.ic_arrow_up_2x)
+                viewHolder.view.expandIndicator.setImageResource(R.drawable.hld_ic_arrow_up_2x)
             }
             else {
                 viewHolder.view.tableHeaderView.visibility = View.GONE
-                viewHolder.view.expandIndicator.setImageResource(R.drawable.ic_arrow_down_2x)
+                viewHolder.view.expandIndicator.setImageResource(R.drawable.hld_ic_arrow_down_2x)
             }
             viewHolder.view.tableHeaderView.bindData(headerCols)
         }
@@ -106,7 +104,6 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                 }
             }
         }
-
     }
 
     class Level1ViewHolder(val view : Level1View) : RecyclerView.ViewHolder(view){
@@ -168,7 +165,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         if(viewType.equals(viewTypes.get(0))){
             val tableHeaderRowView = TableHeaderRowView(parent.context,getColumnCount(),getColumnWidths().toTypedArray(),getSortClickListener(),headerRowHeight)
             tableHeaderRowView.setData(getHeaderData().also { headerCols = it })
-            tableHeaderRowView.addInfoIconSpace(infoIconSpaceWidth)
+            tableHeaderRowView.addInfoIconSpace()
             tableHeaderRowView.setNewHeight(headerRowHeight)
             val level1View = Level1View(parent.context)
             level1View.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,RecyclerView.LayoutParams.WRAP_CONTENT)
@@ -190,7 +187,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                    level2View.addColumn(getLevel2CellView(i,parent),getColumnWidth(i),i)
                }
                level2View.setNewHeight(rowHeight)
-               level2View.addInfoIconSpace(infoIconSpaceWidth)
+               level2View.addInfoIconSpace()
                level2View.addHorizontalScrollListener(scrollChangeListener)
                level2View.addFlingListener(flingListener)
                level2View.tag = tag
@@ -204,7 +201,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                 level3View.addColumn(getLevel3CellView(i,parent),getColumnWidth(i),i)
             }
             level3View.setNewHeight(rowHeight)
-            level3View.addInfoIconSpace(infoIconSpaceWidth)
+            level3View.addInfoIconSpace()
             level3View.addHorizontalScrollListener(scrollChangeListener)
             level3View.addFlingListener(flingListener)
             level3View.tag = tag
@@ -219,7 +216,7 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
                 level4View.addColumn(getLevel4CellView(i,parent),getColumnWidth(i),i)
             }
             level4View.setNewHeight(rowHeight)
-            level4View.addInfoIconSpace(infoIconSpaceWidth)
+            level4View.addInfoIconSpace()
             level4View.addHorizontalScrollListener(scrollChangeListener)
             level4View.addFlingListener(flingListener)
             level4View.tag = tag

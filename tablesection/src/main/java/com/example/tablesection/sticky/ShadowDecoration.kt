@@ -19,7 +19,7 @@ class ShadowDecoration : RecyclerView.ItemDecoration() {
 
 
         if (drawable == null) {
-            drawable = parent.context.getDrawable(R.drawable.myshadow5)
+            drawable = parent.context.getDrawable(R.drawable.hld_myshadow5)
         }
 
 
