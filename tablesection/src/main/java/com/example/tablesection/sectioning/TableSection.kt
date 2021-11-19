@@ -95,11 +95,11 @@ abstract class TableSection(val viewTypes : ArrayList<Int>,
         if(viewHolder is Level1ViewHolder){
             if(isExpanded){
                 viewHolder.view.tableHeaderView.visibility = View.VISIBLE
-                viewHolder.view.expandIndicator.setImageResource(R.drawable.ic_arrow_down_2x)
+                viewHolder.view.expandIndicator.setImageResource(R.drawable.ic_arrow_up_2x)
             }
             else {
                 viewHolder.view.tableHeaderView.visibility = View.GONE
-                viewHolder.view.expandIndicator.setImageResource(R.drawable.ic_arrow_up_2x)
+                viewHolder.view.expandIndicator.setImageResource(R.drawable.ic_arrow_down_2x)
             }
             viewHolder.view.tableHeaderView.bindData(headerCols)
         }
