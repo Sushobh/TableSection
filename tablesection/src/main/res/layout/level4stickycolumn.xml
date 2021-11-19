@@ -37,6 +37,6 @@
         android:textSize="@dimen/hd_12sp"
         tools:text="Sticky Columnsadasdasdasdsa"
         app:layout_constraintStart_toEndOf="@+id/ic_indicator"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/hld_sticky_column_text_width_level4"
         android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

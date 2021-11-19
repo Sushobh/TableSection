@@ -53,7 +53,7 @@ fun getLevel2Dummy(stringLength : Int) : Level2Data {
 }
 
 fun getLevel3Dummy(stringLength : Int) : Level3Data {
-    return Level3Data(getRandomString(stringLength),
+    return Level3Data(getRandomString(400),
         getRandomString(stringLength),
         getRandomString(stringLength),
         getRandomString(stringLength),
@@ -68,7 +68,7 @@ fun getLevel3Dummy(stringLength : Int) : Level3Data {
 }
 
 fun getLevel4Dummy(stringLength : Int) : Level4Data {
-    return Level4Data(getRandomString(stringLength),
+    return Level4Data(getRandomString(400),
         getRandomString(stringLength),
         getRandomString(stringLength),
         getRandomString(stringLength),

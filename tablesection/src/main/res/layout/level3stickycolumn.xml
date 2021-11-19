@@ -26,6 +26,6 @@
         android:textSize="@dimen/hd_12sp"
         tools:text="Sticky Columnasdasdasdasdasdasdasdasdasdasdas"
         app:layout_constraintStart_toEndOf="@+id/divider_horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/hld_sticky_column_text_width"
         android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
